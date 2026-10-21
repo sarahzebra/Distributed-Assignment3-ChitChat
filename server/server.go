@@ -30,17 +30,20 @@ type ChitChatServer struct {
 
 
 func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
-	f, err := os.OpenFile("ChitChat.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	
+	const append = os.O_APPEND; // adss new logs to the end of the file
+	const create = os.O_CREATE; // creates the file if it doesn't exist
+	const wronly = os.O_WRONLY; // opens the file for writing only
+	
+	f, err := os.OpenFile("ChitChat.log", append|create|wronly, 0666)
 	if err != nil {
 		log.Fatalf("Error opening file: %v", err)
 	}
-
-	
-
 	defer f.Close()
 
-	// Set output of logs to file.
+	// Redirects and sets all standard log outputs to file.
 	log.SetOutput(f)
+	log.SetFlags(log.Ldate|log.Ltime|log.Lmicroseconds)
 
 	var participant string;
 	
