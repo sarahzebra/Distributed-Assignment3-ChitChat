@@ -96,7 +96,7 @@ func main() {
 		if(utf8.RuneCountInString(text) > 128){
 			fmt.Println("Message is too long")
 			
-		} else{
+		} else {
 		if(text == "/leave\n"){
 			streamMessage.CloseSend()
 			leaving = true;
