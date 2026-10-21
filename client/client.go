@@ -46,10 +46,15 @@ func main() {
     
 
 	streamMessage, err := client.PostMessage(context.Background())
-	header, err := streamMessage.Header()
-		if err != nil {
-			log.Fatalf("failed to get header from stream: %v", err) // Kan lowkey ikke logge her fordi vi først opretter den længere nede - what to do:(?? 
+	if err != nil {
+			log.Fatalf("failed to call PostMessage: %v", err) 
 		}
+
+	header, err := streamMessage.Header()
+	if err != nil {
+		log.Fatalf("failed to get header from stream: %v", err) 
+	}
+
 	id := header["client-id"][0] //handle error here??? see here:https://github.com/grpc/grpc-go/blob/master/examples/features/metadata/client/main.go
 	
 	// New creates a new Logger with log data destination, prefix, logging properties.
@@ -61,10 +66,6 @@ func main() {
 	
 	if err == io.EOF {
 		return;
-	}
-
-	if err != nil {
-		log.Fatalf("Not working")
 	}
 
 	fmt.Print("Enter your name: ")
@@ -81,7 +82,7 @@ func main() {
 		LogicalTimestamp: timeStamp,
 
 	})
-	clientLogger.Println("[Joined]")
+	clientLogger.Println("[JOINED]")
 
 	// Receiving goroutine
 	
@@ -110,7 +111,7 @@ func main() {
 		if(text == "/leave\n"){
 			leaving = true;
 			streamMessage.CloseSend()
-			clientLogger.Println("[Left]")
+			clientLogger.Println("[DISCONNECTED]")
 			<-waitc
 			return;
 
@@ -121,7 +122,7 @@ func main() {
             Message:   ": " + text,
             LogicalTimestamp: timestamppb.Now(),
         })
-		clientLogger.Println("[Message] " + text)
+		clientLogger.Printf("[MESSAGE SENT]: " + text)
 	}
     }
 	
