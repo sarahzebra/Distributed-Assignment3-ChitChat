@@ -40,7 +40,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	
 	f, err := os.OpenFile("server.log", append|create|wronly, 0666)
 	if err != nil {
-		log.Fatalf("Error opening file: %v", err) // Kan lowkey ikke logge her fordi vi først opretter den længere nede - what to do:(?? 
+		log.Fatalf("Error opening file: %v", err) 
 	}
 	defer f.Close()
 	
