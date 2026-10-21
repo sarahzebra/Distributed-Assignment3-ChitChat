@@ -21,7 +21,10 @@ var leaving bool;
 
 
 func main() {
-	
+	// Log needs: event type, timestamp
+	// Events needed to be logged: Server startup/shutdown, client connection/disconnection
+
+
 	// Open (or create) file for writing logs.
 	f, err := os.OpenFile("client.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
@@ -52,8 +55,6 @@ func main() {
 	// New creates a new Logger with log data destination, prefix, logging properties.
 	clientLogger := log.New(f, "[Client #" + id + "] ", log.Ldate|log.Ltime)
 
-	clientLogger.Println("helloooo")
-
 
 	waitc := make(chan struct{})
 	
@@ -80,6 +81,7 @@ func main() {
 		LogicalTimestamp: timeStamp,
 
 	})
+	clientLogger.Println("[Joined]")
 
 	// Receiving goroutine
 	
@@ -106,8 +108,9 @@ func main() {
 			
 		} else {
 		if(text == "/leave\n"){
-			streamMessage.CloseSend()
 			leaving = true;
+			streamMessage.CloseSend()
+			clientLogger.Println("[Left]")
 			<-waitc
 			return;
 
@@ -118,6 +121,7 @@ func main() {
             Message:   ": " + text,
             LogicalTimestamp: timestamppb.Now(),
         })
+		clientLogger.Println("[Message] " + text)
 	}
     }
 	

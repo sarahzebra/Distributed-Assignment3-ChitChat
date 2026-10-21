@@ -2,3 +2,18 @@
 2026/10/21 17:58:56 Receive error: rpc error: code = Unavailable desc = error reading from server: EOF
 [Client #1] 2026/10/21 17:59:30 helloooo
 [Client #2] 2026/10/21 17:59:40 helloooo
+[Client #1] 2026/10/21 18:05:17 helloooo
+[Client #1] 2026/10/21 18:13:30 [Joined]
+[Client #2] 2026/10/21 18:17:11 [Joined]
+[Client #2] 2026/10/21 18:17:24 [Left]
+[Client #3] 2026/10/21 18:19:42 [Joined]
+[Client #3] 2026/10/21 18:19:44 [Left]
+[Client #1] 2026/10/21 18:23:27 [Joined]
+[Client #2] 2026/10/21 18:23:30 [Joined]
+[Client #1] 2026/10/21 18:23:43 [Message] hejsa
+
+[Client #1] 2026/10/21 18:25:09 [Message] hejsa
+
+[Client #1] 2026/10/21 18:25:25 [Joined]
+[Client #1] 2026/10/21 18:25:28 [Message] 'hejsaaaa
+'

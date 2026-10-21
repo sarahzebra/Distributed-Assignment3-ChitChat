@@ -30,7 +30,7 @@ type ChitChatServer struct {
 
 
 func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
-	// Log needs: Component name (with identifier fx. client ID), event type, timestamp
+	// Log needs: event type, timestamp
 	// Events needed to be logged: Server startup/shutdown, client connection/disconnection, join/leave messages, message delivery
 
 
@@ -47,7 +47,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	// New creates a new Logger with log data destination, prefix, logging properties.
 	serverLogger := log.New(f, "[Server] ", log.Ldate|log.Ltime)
 
-	serverLogger.Println("helloooo")
+	serverLogger.Println("hellooo")
 
 
 
