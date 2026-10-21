@@ -1,12 +1,11 @@
 syntax = "proto3";
-import "google/protobuf/timestamp.proto";
 option go_package = "assignment-3/grpc/proto";
 
 message Message {
     string id = 1;
     string participant = 2;
     string message = 3;
-    google.protobuf.Timestamp logicalTimestamp = 4;
+    int32 logicalTimestamp = 4;
 }
 
 message Empty {}

@@ -9,7 +9,6 @@ package proto
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -27,7 +26,7 @@ type Message struct {
 	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Participant      string                 `protobuf:"bytes,2,opt,name=participant,proto3" json:"participant,omitempty"`
 	Message          string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
-	LogicalTimestamp *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=logicalTimestamp,proto3" json:"logicalTimestamp,omitempty"`
+	LogicalTimestamp int32                  `protobuf:"varint,4,opt,name=logicalTimestamp,proto3" json:"logicalTimestamp,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -83,11 +82,11 @@ func (x *Message) GetMessage() string {
 	return ""
 }
 
-func (x *Message) GetLogicalTimestamp() *timestamppb.Timestamp {
+func (x *Message) GetLogicalTimestamp() int32 {
 	if x != nil {
 		return x.LogicalTimestamp
 	}
-	return nil
+	return 0
 }
 
 type Empty struct {
@@ -130,12 +129,12 @@ var File_grpc_proto_proto protoreflect.FileDescriptor
 
 const file_grpc_proto_proto_rawDesc = "" +
 	"\n" +
-	"\x10grpc/proto.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9d\x01\n" +
+	"\x10grpc/proto.proto\"\x81\x01\n" +
 	"\aMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
 	"\vparticipant\x18\x02 \x01(\tR\vparticipant\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\x12F\n" +
-	"\x10logicalTimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\x10logicalTimestamp\"\a\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\x12*\n" +
+	"\x10logicalTimestamp\x18\x04 \x01(\x05R\x10logicalTimestamp\"\a\n" +
 	"\x05Empty23\n" +
 	"\bChitChat\x12'\n" +
 	"\vPostMessage\x12\b.Message\x1a\b.Message\"\x00(\x010\x01B\x19Z\x17assignment-3/grpc/protob\x06proto3"
@@ -154,19 +153,17 @@ func file_grpc_proto_proto_rawDescGZIP() []byte {
 
 var file_grpc_proto_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_grpc_proto_proto_goTypes = []any{
-	(*Message)(nil),               // 0: Message
-	(*Empty)(nil),                 // 1: Empty
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*Message)(nil), // 0: Message
+	(*Empty)(nil),   // 1: Empty
 }
 var file_grpc_proto_proto_depIdxs = []int32{
-	2, // 0: Message.logicalTimestamp:type_name -> google.protobuf.Timestamp
-	0, // 1: ChitChat.PostMessage:input_type -> Message
-	0, // 2: ChitChat.PostMessage:output_type -> Message
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // 0: ChitChat.PostMessage:input_type -> Message
+	0, // 1: ChitChat.PostMessage:output_type -> Message
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_grpc_proto_proto_init() }
