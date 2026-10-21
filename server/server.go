@@ -26,10 +26,11 @@ type ChitChatServer struct {
 	proto.UnimplementedChitChatServer
 	mu      sync.Mutex
 	clients map[string]proto.ChitChat_PostMessageServer
+	logicalClock int64
 }
 
 
-func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
+func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, x]) error {
 	// Log needs: event type, timestamp
 	// Events needed to be logged: Server startup/shutdown, client connection/disconnection, join/leave messages, message delivery
 
@@ -73,7 +74,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
                 _ = st.Send(&proto.Message{
             		Participant:      participant,
             		Message:   ExitMessage,
-            		LogicalTimestamp: ExitTimeStamp,
+            		Clock: s.logicalClock,
         			})
 				}
 				
@@ -81,7 +82,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 			serverLogger.Printf("[CLIENT DISCONNECTED]: Client " + participant) // Missing the client ID here...
 			defer delete(s.clients,participant)
 			s.mu.Unlock()
-			
+
       		return nil
     	}
 

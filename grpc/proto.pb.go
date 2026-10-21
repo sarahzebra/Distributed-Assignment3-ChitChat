@@ -22,13 +22,13 @@ const (
 )
 
 type Message struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Participant      string                 `protobuf:"bytes,2,opt,name=participant,proto3" json:"participant,omitempty"`
-	Message          string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
-	LogicalTimestamp int32                  `protobuf:"varint,4,opt,name=logicalTimestamp,proto3" json:"logicalTimestamp,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Participant   string                 `protobuf:"bytes,2,opt,name=participant,proto3" json:"participant,omitempty"`
+	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	Clock         int64                  `protobuf:"varint,4,opt,name=clock,proto3" json:"clock,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Message) Reset() {
@@ -82,9 +82,9 @@ func (x *Message) GetMessage() string {
 	return ""
 }
 
-func (x *Message) GetLogicalTimestamp() int32 {
+func (x *Message) GetClock() int64 {
 	if x != nil {
-		return x.LogicalTimestamp
+		return x.Clock
 	}
 	return 0
 }
@@ -129,12 +129,12 @@ var File_grpc_proto_proto protoreflect.FileDescriptor
 
 const file_grpc_proto_proto_rawDesc = "" +
 	"\n" +
-	"\x10grpc/proto.proto\"\x81\x01\n" +
+	"\x10grpc/proto.proto\"k\n" +
 	"\aMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
 	"\vparticipant\x18\x02 \x01(\tR\vparticipant\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\x12*\n" +
-	"\x10logicalTimestamp\x18\x04 \x01(\x05R\x10logicalTimestamp\"\a\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\x12\x14\n" +
+	"\x05clock\x18\x04 \x01(\x03R\x05clock\"\a\n" +
 	"\x05Empty23\n" +
 	"\bChitChat\x12'\n" +
 	"\vPostMessage\x12\b.Message\x1a\b.Message\"\x00(\x010\x01B\x19Z\x17assignment-3/grpc/protob\x06proto3"

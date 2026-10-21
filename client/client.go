@@ -11,19 +11,18 @@ import (
 	"os"
 	"strings"
 	"unicode/utf8"
+	"strconv"
+
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 var leaving bool;
 
 
 func main() {
-	// Log needs: event type, timestamp
-	// Events needed to be logged: Server startup/shutdown, client connection/disconnection
-
+	var logicalClock int64 = 0
 
 	// Open (or create) file for writing logs.
 	f, err := os.OpenFile("client.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
@@ -73,13 +72,12 @@ func main() {
 	participant, _:= reader.ReadString('\n')
 	participant = strings.TrimSpace(participant)
 
-	timeStamp := timestamppb.Now()
-	joinMessage := " has joined the chat at " + timeStamp.AsTime().Local().Format("2006-01-02 15:04:05") + "\n"
+	joinMessage := " has joined the chat at " + strconv.Itoa(int(logicalClock)) + "\n"
 	streamMessage.Send(&proto.Message{
 		Id: id,
 		Participant: participant,
 		Message: joinMessage,
-		LogicalTimestamp: timeStamp,
+		Clock: logicalClock,
 
 	})
 	clientLogger.Println("[JOINED]")
@@ -116,11 +114,13 @@ func main() {
 			return;
 
 		}
+
+		logicalClock++ // Increment clock on event: Sent Message
         streamMessage.Send(&proto.Message{
             Id: id,
 			Participant:      participant,
             Message:   ": " + text,
-            LogicalTimestamp: timestamppb.Now(),
+            Clock: logicalClock,
         })
 		clientLogger.Printf("[MESSAGE SENT]: " + text)
 	}

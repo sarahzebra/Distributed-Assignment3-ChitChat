@@ -5,7 +5,7 @@ message Message {
     string id = 1;
     string participant = 2;
     string message = 3;
-    int32 logicalTimestamp = 4;
+    int64 clock = 4;
 }
 
 message Empty {}
