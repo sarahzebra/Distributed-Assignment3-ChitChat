@@ -43,7 +43,9 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 
 	// Redirects and sets all standard log outputs to file.
 	log.SetOutput(f)
-	log.SetFlags(log.Ldate|log.Ltime|log.Lmicroseconds)
+	log.SetFlags(log.Ldate|log.Ltime|log.Lmicroseconds) // microseconds not cool
+	
+	log.New(f, "[Server] ", log.Ldate|log.Ltime) 
 
 	var participant string;
 	

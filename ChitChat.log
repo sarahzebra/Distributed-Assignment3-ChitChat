@@ -12,3 +12,15 @@
 2026/10/21 11:35:23 2
 2026/10/21 17:03:12.757121 1
 2026/10/21 17:03:31.377199 2
+2026/10/21 17:11:51 Receive error: rpc error: code = Unavailable desc = error reading from server: EOF
+2026/10/21 17:11:51 Receive error: rpc error: code = Unavailable desc = error reading from server: EOF
+2026/10/21 17:12:13.639034 1
+2026/10/21 17:12:15.993397 2
+2026/10/21 17:13:27 Receive error: rpc error: code = Unavailable desc = error reading from server: EOF
+2026/10/21 17:13:27 Receive error: rpc error: code = Unavailable desc = error reading from server: EOF
+2026/10/21 17:13:39.050903 Server connected
+2026/10/21 17:13:40.854445 Server connected
+2026/10/21 17:13:43.076308 1
+2026/10/21 17:13:45.104615 2
+2026/10/21 17:14:21.212027 1
+2026/10/21 17:14:26.049976 2
