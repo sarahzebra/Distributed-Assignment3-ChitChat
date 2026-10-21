@@ -73,7 +73,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	message, err := stream.Recv()
 
     	if err == io.EOF {
-				ExitTimeStamp := timestamppb.Now()
+			ExitTimeStamp := timestamppb.Now()
 				ExitTime := ExitTimeStamp.AsTime().Local().Format("2006-01-02 15:04:05")
 				ExitMessage := " has left the chat at " + ExitTime + "\n"
 			for p, st := range s.clients {
@@ -84,8 +84,9 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
             		LogicalTimestamp: ExitTimeStamp,
         			})
 				}
-			
+				
 			}
+			serverLogger.Printf("[CLIENT DISCONNECTED]: Client " + participant) // Missing the client ID here...
 			defer delete(s.clients,participant)
       		return nil
     	}
@@ -108,6 +109,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	//log.Println(participant, ": ", message.GetMessage())
     s.mu.Lock()
 	s.clients[participant] = stream
+	serverLogger.Printf("[CONNECTION ESTABLISHED]: Client #" + id)
 
 
 	for p, st := range s.clients {

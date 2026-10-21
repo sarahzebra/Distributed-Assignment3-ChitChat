@@ -12,3 +12,11 @@
 [Server] 2026/10/21 18:29:20 hellooo
 [Server] 2026/10/21 18:39:29 hellooo
 [Server] 2026/10/21 18:40:19 hellooo
+[Server] 2026/10/21 19:45:29 hellooo
+[Server] 2026/10/21 19:45:31 [Client #1 connected]
+[Server] 2026/10/21 19:46:43 hellooo
+[Server] 2026/10/21 19:48:26 hellooo
+[Server] 2026/10/21 19:48:28 [CONNECTION ESTABLISHED]: Client #1
+[Server] 2026/10/21 19:58:31 hellooo
+[Server] 2026/10/21 19:58:32 [CONNECTION ESTABLISHED]: Client #1
+[Server] 2026/10/21 19:58:38 [CLIENT DISCONNECTED]: Client #s
