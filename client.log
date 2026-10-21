@@ -1,0 +1,4 @@
+2026/10/21 17:58:56 Receive error: rpc error: code = Unavailable desc = error reading from server: EOF
+2026/10/21 17:58:56 Receive error: rpc error: code = Unavailable desc = error reading from server: EOF
+[Client #1] 2026/10/21 17:59:30 helloooo
+[Client #2] 2026/10/21 17:59:40 helloooo

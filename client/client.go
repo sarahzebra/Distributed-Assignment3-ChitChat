@@ -3,6 +3,7 @@ package main
 import (
 	proto "assignment-3/grpc"
 	"bufio"
+	//"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -10,7 +11,6 @@ import (
 	"os"
 	"strings"
 	"unicode/utf8"
-	
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -21,15 +21,17 @@ var leaving bool;
 
 
 func main() {
-	// Open file for writing logs.
-	f, err := os.OpenFile("ChitChat.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	
+	// Open (or create) file for writing logs.
+	f, err := os.OpenFile("client.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
-		log.Fatalf("Error opening file: %v", err)
+		log.Fatalf("Error opening file: %v", err) // Kan lowkey ikke logge her fordi vi først opretter den længere nede - what to do:(?? 
 	}
 	defer f.Close()
 
+
 	// Set output of logs to file.
-	log.SetOutput(f)
+	// log.SetOutput(f)
 
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 
@@ -43,9 +45,15 @@ func main() {
 	streamMessage, err := client.PostMessage(context.Background())
 	header, err := streamMessage.Header()
 		if err != nil {
-			log.Fatalf("failed to get header from stream: %v", err)
+			log.Fatalf("failed to get header from stream: %v", err) // Kan lowkey ikke logge her fordi vi først opretter den længere nede - what to do:(?? 
 		}
 	id := header["client-id"][0] //handle error here??? see here:https://github.com/grpc/grpc-go/blob/master/examples/features/metadata/client/main.go
+	
+	// New creates a new Logger with log data destination, prefix, logging properties.
+	clientLogger := log.New(f, "[Client #" + id + "] ", log.Ldate|log.Ltime)
+
+	clientLogger.Println("helloooo")
+
 
 	waitc := make(chan struct{})
 	

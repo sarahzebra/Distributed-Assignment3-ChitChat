@@ -38,19 +38,26 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	const create = os.O_CREATE; // creates the file if it doesn't exist
 	const wronly = os.O_WRONLY; // opens the file for writing only
 	
-	f, err := os.OpenFile("ChitChat.log", append|create|wronly, 0666)
+	f, err := os.OpenFile("server.log", append|create|wronly, 0666)
 	if err != nil {
-		log.Fatalf("Error opening file: %v", err)
+		log.Fatalf("Error opening file: %v", err) // Kan lowkey ikke logge her fordi vi først opretter den længere nede - what to do:(?? 
 	}
 	defer f.Close()
 	
+	// New creates a new Logger with log data destination, prefix, logging properties.
+	serverLogger := log.New(f, "[Server] ", log.Ldate|log.Ltime)
+
+	serverLogger.Println("helloooo")
+
+
+
 	// Redirects and sets all standard log outputs to file.
-	log.SetOutput(f)
+	/* log.SetOutput(f)
 
 	log.SetPrefix("[Server] ")
 	log.SetFlags(log.Ldate|log.Ltime)
 	
-	log.Println("Server connected")  
+	log.Println("Server connected")   */
 
 	var participant string;
 	
