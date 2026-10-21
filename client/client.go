@@ -9,7 +9,8 @@ import (
 	"log"
 	"os"
 	"strings"
-	//"time"
+	"unicode/utf8"
+	
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -20,7 +21,15 @@ var leaving bool;
 
 
 func main() {
-	openLog()
+	// Open file for writing logs.
+	f, err := os.OpenFile("ChitChat.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatalf("Error opening file: %v", err)
+	}
+	defer f.Close()
+
+	// Set output of logs to file.
+	log.SetOutput(f)
 
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 
@@ -83,6 +92,11 @@ func main() {
     // Sending loop
     for {
         text, _ := reader.ReadString('\n')
+
+		if(utf8.RuneCountInString(text) > 128){
+			fmt.Println("Message is too long")
+			
+		} else{
 		if(text == "/leave\n"){
 			streamMessage.CloseSend()
 			leaving = true;
@@ -96,19 +110,8 @@ func main() {
             Message:   ": " + text,
             LogicalTimestamp: timestamppb.Now(),
         })
+	}
     }
 	
-	
 }
 
-func openLog(){
-	// Open file for writing logs.
-	f, err := os.OpenFile("ChitChat.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
-	if err != nil {
-		log.Fatalf("Error opening file: %v", err)
-	}
-	defer f.Close()
-
-	// Set output of logs to file.
-	log.SetOutput(f)
-}

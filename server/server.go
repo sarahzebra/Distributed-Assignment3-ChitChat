@@ -2,7 +2,7 @@ package main
 
 import (
 	proto "assignment-3/grpc"
-	"fmt"
+	//"fmt"
 	"io"
 	"log"
 	"net"
@@ -30,6 +30,18 @@ type ChitChatServer struct {
 
 
 func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
+	f, err := os.OpenFile("ChitChat.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatalf("Error opening file: %v", err)
+	}
+
+	
+
+	defer f.Close()
+
+	// Set output of logs to file.
+	log.SetOutput(f)
+
 	var participant string;
 	
 	clientId++
@@ -38,7 +50,8 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 
 	stream.SendHeader(header)
 
-	openLog()
+	
+
 	for {
     	message, err := stream.Recv()
 
@@ -61,13 +74,12 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	}
 
     
-
 		if err != nil {
     	  return err
     	}
 	
 	id := message.GetId()
-	fmt.Println(id) //have to log here, just so it doesnt brokker sig
+	log.Println(id) //have to log here, just so it doesnt brokker sig
 	participant = message.GetParticipant();
 	text := message.GetMessage();
 	timestamp := message.GetLogicalTimestamp()
@@ -113,13 +125,14 @@ func main() {
 	server := NewServer()
 
 	server.start_server()
+	
 }
 
 func (s *ChitChatServer) start_server() {
 	grpcServer := grpc.NewServer()
 	listener, err := net.Listen("tcp", ":5050")
 	if err != nil {
-		log.Fatalf("Did not work")
+		log.Fatalf("Did not work" + err.Error())
 	}
 
 	proto.RegisterChitChatServer(grpcServer, s)
@@ -136,17 +149,5 @@ func NewServer() *ChitChatServer {
     return &ChitChatServer{
         clients: make(map[string]proto.ChitChat_PostMessageServer),
     }
-}
-
-func openLog(){
-	// Open file for writing logs.
-	f, err := os.OpenFile("ChitChat.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
-	if err != nil {
-		log.Fatalf("Error opening file: %v", err)
-	}
-	defer f.Close()
-
-	// Set output of logs to file.
-	log.SetOutput(f)
 }
 
