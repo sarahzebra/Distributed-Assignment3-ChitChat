@@ -30,7 +30,10 @@ type ChitChatServer struct {
 
 
 func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
-	
+	// Log needs: Component name (with identifier fx. client ID), event type, timestamp
+	// Events needed to be logged: Server startup/shutdown, client connection/disconnection, join/leave messages, message delivery
+
+
 	const append = os.O_APPEND; // adss new logs to the end of the file
 	const create = os.O_CREATE; // creates the file if it doesn't exist
 	const wronly = os.O_WRONLY; // opens the file for writing only
@@ -40,12 +43,14 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 		log.Fatalf("Error opening file: %v", err)
 	}
 	defer f.Close()
-
+	
 	// Redirects and sets all standard log outputs to file.
 	log.SetOutput(f)
-	log.SetFlags(log.Ldate|log.Ltime|log.Lmicroseconds) // microseconds not cool
+
+	log.SetPrefix("[Server] ")
+	log.SetFlags(log.Ldate|log.Ltime)
 	
-	log.New(f, "[Server] ", log.Ldate|log.Ltime) 
+	log.Println("Server connected")  
 
 	var participant string;
 	
