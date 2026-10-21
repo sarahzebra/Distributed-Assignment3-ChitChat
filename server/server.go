@@ -49,16 +49,6 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 
 	serverLogger.Println("hellooo")
 
-
-
-	// Redirects and sets all standard log outputs to file.
-	/* log.SetOutput(f)
-
-	log.SetPrefix("[Server] ")
-	log.SetFlags(log.Ldate|log.Ltime)
-	
-	log.Println("Server connected")   */
-
 	var participant string;
 	
 	clientId++
@@ -73,6 +63,8 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	message, err := stream.Recv()
 
     	if err == io.EOF {
+			s.mu.Lock() // We're deleting from s.clients so we should lock 
+
 			ExitTimeStamp := timestamppb.Now()
 				ExitTime := ExitTimeStamp.AsTime().Local().Format("2006-01-02 15:04:05")
 				ExitMessage := " has left the chat at " + ExitTime + "\n"
@@ -88,6 +80,8 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 			}
 			serverLogger.Printf("[CLIENT DISCONNECTED]: Client " + participant) // Missing the client ID here...
 			defer delete(s.clients,participant)
+			s.mu.Unlock()
+			
       		return nil
     	}
 
@@ -109,7 +103,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	//log.Println(participant, ": ", message.GetMessage())
     s.mu.Lock()
 	s.clients[participant] = stream
-	serverLogger.Printf("[CONNECTION ESTABLISHED]: Client #" + id)
+	serverLogger.Printf("[CONNECTION ESTABLISHED]: Client #" + id) // Køres lige nu 2 gange???
 
 
 	for p, st := range s.clients {
