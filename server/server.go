@@ -30,10 +30,8 @@ type ChitChatServer struct {
 
 
 func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
-	// Log needs: event type, timestamp
-	// Events needed to be logged: Server startup/shutdown, client connection/disconnection, join/leave messages, message delivery
-
-
+	
+	// --- Opens or creates a new server log
 	const append = os.O_APPEND; // adss new logs to the end of the file
 	const create = os.O_CREATE; // creates the file if it doesn't exist
 	const wronly = os.O_WRONLY; // opens the file for writing only
@@ -47,8 +45,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	// New creates a new Logger with log data destination, prefix, logging properties.
 	serverLogger := log.New(f, "[Server] ", log.Ldate|log.Ltime)
 
-	serverLogger.Println("hellooo")
-
+	// --- A client is connected
 	var participant string;
 	
 	clientId++
@@ -56,7 +53,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	header := metadata.New(map[string]string{"client-id":strconv.Itoa(clientId)})
 
 	stream.SendHeader(header)
-
+	// Skal connection logges her i stedet for længere nede?
 	
 
 	for {

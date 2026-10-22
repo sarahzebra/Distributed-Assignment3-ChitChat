@@ -27,13 +27,10 @@ func main() {
 	// Open (or create) file for writing logs.
 	f, err := os.OpenFile("client.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
-		log.Fatalf("Error opening file: %v", err) // Kan lowkey ikke logge her fordi vi først opretter den længere nede - what to do:(?? 
+		log.Fatalf("Error opening file: %v", err) 
 	}
 	defer f.Close()
 
-
-	// Set output of logs to file.
-	// log.SetOutput(f)
 
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 
@@ -57,7 +54,7 @@ func main() {
 	id := header["client-id"][0] //handle error here??? see here:https://github.com/grpc/grpc-go/blob/master/examples/features/metadata/client/main.go
 	
 	// New creates a new Logger with log data destination, prefix, logging properties.
-	clientLogger := log.New(f, "[Client #" + id + "] ", log.Ldate|log.Ltime)
+	clientLogger := log.New(f, "[Client #" + id + "] ", log.Ldate|log.Ltime) // skift log.Ldate... til 0 når vi vil have logical time ind
 
 
 	waitc := make(chan struct{})
@@ -90,6 +87,7 @@ func main() {
     go func() {
 		defer close(waitc)
         for {
+			// --- Incoming message ---
             msg, err := streamMessage.Recv()
             if err != nil {
 				if(!leaving){
@@ -104,8 +102,8 @@ func main() {
 			}
 			clientLogicalClock++
 
-
             fmt.Print(msg.Participant, msg.Message)
+			clientLogger.Printf("[MESSAGE RECIEVED]" + msg.Message)
         }
     }()
 	
@@ -133,7 +131,7 @@ func main() {
             Message:   ": " + text,
             Clock: clientLogicalClock,
         })
-		clientLogger.Printf("[MESSAGE SENT]: " + text) // Før eller efter sent message?
+		// clientLogger.Printf("[MESSAGE SENT]: " + text) // Skal ikke logge sendte beskeder kun modtagne??
 	}
     }
 	
