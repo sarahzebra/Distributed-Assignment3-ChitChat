@@ -45,14 +45,16 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	// New creates a new Logger with log data destination, prefix, logging properties.
 	serverLogger := log.New(f, "[Server] ", log.Ldate|log.Ltime)
 
-	// --- Client connects (Transport level)
+
+
+	// --- [Event: Client connection] --- 
 	var participant string;
 	clientId++
+	s.serverLogicalClock++
+	serverLogger.Println("[CLIENT #" + strconv.Itoa(clientId) + " HAS BEEN CONNECTED]")
 	
 	header := metadata.New(map[string]string{"client-id":strconv.Itoa(clientId)})
 	stream.SendHeader(header)
-
-	// Skal connection logges her i stedet for længere nede?
 
 	for {
     	message, err := stream.Recv()
@@ -92,45 +94,27 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	  return err
     	}
 
-		// --- Client connects --- (Application-Level)
-		serverLogger.Printf("[CONNECTION ESTABLISHED]: Client #" + id) // Køres lige nu 2 gange???
+		// --- [Event: Broadcasting join message] --- 
 		id := message.GetId()
-		log.Println(id) //have to log here, just so it doesnt brokker sig
 		participant = message.GetParticipant();
 		text := message.GetMessage();
-
 
 		s.mu.Lock()
 		s.clients[participant] = stream
 
-
 		for p, st := range s.clients {
-				if p != participant {
+				if p != participant || p == participant { // Skal lige fixes??? Message should be sent to all clients, including the one that sent it.
 					_ = st.Send(&proto.Message{
 						Participant:      participant,
 						Message:   text,
-						Clock: message.GetClock(),
+						Clock: s.serverLogicalClock + 1, //increment 
 						}) 
+						serverLogger.Println("[JOIN MESSAGE HAS BEEN BROADCASTED] to client#" + id)
 				}
 			}
 			s.mu.Unlock()
-
 	}
 }
-
-/*func (s *ChitChatServer) Join(ctx context.Context, message *proto.Message) error {
-	var participant string = message.Participant
-
-	for p, st := range s.clients {
-            if p != participant {
-                _ = st.Send(message.Message) // ignore error for simplicity
-            }
-        }
-        s.mu.Unlock()
-
-  }*/
-
-
 
 func main() {
 	server := NewServer()
@@ -161,4 +145,3 @@ func NewServer() *ChitChatServer {
         clients: make(map[string]proto.ChitChat_PostMessageServer),
     }
 }
-

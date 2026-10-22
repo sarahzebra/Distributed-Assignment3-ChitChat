@@ -34,28 +34,30 @@ func main() {
 
 	conn, err := grpc.NewClient("localhost:5050", grpc.WithTransportCredentials(insecure.NewCredentials()))
 
-
 	client := proto.NewChitChatClient(conn)
 	
-
 	reader := bufio.NewReader(os.Stdin)
     
 
 	streamMessage, err := client.PostMessage(context.Background())
 	if err != nil {
 			log.Fatalf("failed to call PostMessage: %v", err) 
-		}
+	}
 
 	header, err := streamMessage.Header()
 	if err != nil {
 		log.Fatalf("failed to get header from stream: %v", err) 
 	}
-
 	id := header["client-id"][0] //handle error here??? see here:https://github.com/grpc/grpc-go/blob/master/examples/features/metadata/client/main.go
 	
+
 	// New creates a new Logger with log data destination, prefix, logging properties.
 	clientLogger := log.New(f, "[Client #" + id + "] ", log.Ldate|log.Ltime) // skift log.Ldate... til 0 når vi vil have logical time ind
 
+	
+	// --- [Event: Client connected] ---
+	clientLogicalClock++ // Inkrementerer fordi vi er connected
+	clientLogger.Println("[" + id + "CONNECTED]") // X Client jconnected
 
 	waitc := make(chan struct{})
 	
@@ -71,7 +73,6 @@ func main() {
 	participant, _:= reader.ReadString('\n')
 	participant = strings.TrimSpace(participant)
 
-	clientLogicalClock++
 	joinMessage := " has joined the chat at " + strconv.Itoa(int(clientLogicalClock)) + "\n"
 	streamMessage.Send(&proto.Message{
 		Id: id,
@@ -80,7 +81,6 @@ func main() {
 		Clock: clientLogicalClock,
 
 	})
-	clientLogger.Println("[JOINED]") // Før eller efter send join besked??
 
 
 	// Receiving goroutine
@@ -103,7 +103,7 @@ func main() {
 			clientLogicalClock++
 
             fmt.Print(msg.Participant, msg.Message)
-			clientLogger.Printf("[MESSAGE RECIEVED]" + msg.Message)
+			clientLogger.Printf("[MESSAGE RECIEVED]" + msg.Message + " at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
         }
     }()
 	
@@ -131,7 +131,7 @@ func main() {
             Message:   ": " + text,
             Clock: clientLogicalClock,
         })
-		// clientLogger.Printf("[MESSAGE SENT]: " + text) // Skal ikke logge sendte beskeder kun modtagne??
+		
 	}
     }
 	
