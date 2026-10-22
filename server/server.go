@@ -17,7 +17,6 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
-	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 var clientId int;
@@ -26,11 +25,11 @@ type ChitChatServer struct {
 	proto.UnimplementedChitChatServer
 	mu      sync.Mutex
 	clients map[string]proto.ChitChat_PostMessageServer
-	logicalClock int64
+	serverLogicalClock int64
 }
 
 
-func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, x]) error {
+func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
 	// Log needs: event type, timestamp
 	// Events needed to be logged: Server startup/shutdown, client connection/disconnection, join/leave messages, message delivery
 
@@ -63,23 +62,30 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	for {
     	message, err := stream.Recv()
 
+		// --- Sync with other "nodes" clock and increment
+		if message.GetClock() > s.serverLogicalClock { // Skal det være lige før leaving event eller broadcasting besked eller må det godt ske lige når beskeden modtages?
+			s.serverLogicalClock = message.GetClock()
+		}
+		s.serverLogicalClock++
+
+
     	if err == io.EOF {
 			s.mu.Lock() // We're deleting from s.clients so we should lock 
 
-			ExitTimeStamp := timestamppb.Now()
-				ExitTime := ExitTimeStamp.AsTime().Local().Format("2006-01-02 15:04:05")
-				ExitMessage := " has left the chat at " + ExitTime + "\n"
+			// --- Leaving event ---
+			ExitMessage := " has left the chat at " + strconv.Itoa(int(s.serverLogicalClock)) + "\n"
+			
 			for p, st := range s.clients {
             if p != participant {
                 _ = st.Send(&proto.Message{
             		Participant:      participant,
             		Message:   ExitMessage,
-            		Clock: s.logicalClock,
+            		Clock: s.serverLogicalClock,
         			})
 				}
 				
 			}
-			serverLogger.Printf("[CLIENT DISCONNECTED]: Client " + participant) // Missing the client ID here...
+			serverLogger.Printf("[CLIENT DISCONNECTED]: Client %s", participant) // Missing the client ID here...
 			defer delete(s.clients,participant)
 			s.mu.Unlock()
 
@@ -91,34 +97,30 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	  return err
     	}
 	
-	id := message.GetId()
-	log.Println(id) //have to log here, just so it doesnt brokker sig
-	participant = message.GetParticipant();
-	text := message.GetMessage();
-	timestamp := message.GetLogicalTimestamp()
+		id := message.GetId()
+		log.Println(id) //have to log here, just so it doesnt brokker sig
+		participant = message.GetParticipant();
+		text := message.GetMessage();
 
 
+		// --- Client connects ---
+		s.mu.Lock()
+		s.clients[participant] = stream
+		serverLogger.Printf("[CONNECTION ESTABLISHED]: Client #" + id) // Køres lige nu 2 gange???
 
 
-
-	//log.Println(participant, ": ", message.GetMessage())
-    s.mu.Lock()
-	s.clients[participant] = stream
-	serverLogger.Printf("[CONNECTION ESTABLISHED]: Client #" + id) // Køres lige nu 2 gange???
-
-
-	for p, st := range s.clients {
-            if p != participant {
-                _ = st.Send(&proto.Message{
-            		Participant:      participant,
-            		Message:   text,
-            		LogicalTimestamp: timestamp,
-        			}) 
+		for p, st := range s.clients {
+				if p != participant {
+					_ = st.Send(&proto.Message{
+						Participant:      participant,
+						Message:   text,
+						Clock: message.GetClock(),
+						}) 
+				}
 			}
-        }
-        s.mu.Unlock()
+			s.mu.Unlock()
 
-  }
+	}
 }
 
 /*func (s *ChitChatServer) Join(ctx context.Context, message *proto.Message) error {

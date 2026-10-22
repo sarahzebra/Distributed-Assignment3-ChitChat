@@ -22,7 +22,7 @@ var leaving bool;
 
 
 func main() {
-	var logicalClock int64 = 0
+	var clientLogicalClock int64 = 0
 
 	// Open (or create) file for writing logs.
 	f, err := os.OpenFile("client.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
@@ -67,23 +67,26 @@ func main() {
 		return;
 	}
 
+
+	// --- Client joins chat ---
 	fmt.Print("Enter your name: ")
 
 	participant, _:= reader.ReadString('\n')
 	participant = strings.TrimSpace(participant)
 
-	joinMessage := " has joined the chat at " + strconv.Itoa(int(logicalClock)) + "\n"
+	clientLogicalClock++
+	joinMessage := " has joined the chat at " + strconv.Itoa(int(clientLogicalClock)) + "\n"
 	streamMessage.Send(&proto.Message{
 		Id: id,
 		Participant: participant,
 		Message: joinMessage,
-		Clock: logicalClock,
+		Clock: clientLogicalClock,
 
 	})
-	clientLogger.Println("[JOINED]")
+	clientLogger.Println("[JOINED]") // Før eller efter send join besked??
+
 
 	// Receiving goroutine
-	
     go func() {
 		defer close(waitc)
         for {
@@ -94,6 +97,14 @@ func main() {
 				}
                 break
             }
+
+			// --- Sync with other "nodes" clock and increment
+			if msg.GetClock() > clientLogicalClock {
+				clientLogicalClock = msg.GetClock()
+			}
+			clientLogicalClock++
+
+
             fmt.Print(msg.Participant, msg.Message)
         }
     }()
@@ -108,21 +119,21 @@ func main() {
 		} else {
 		if(text == "/leave\n"){
 			leaving = true;
+			clientLogicalClock++ // increment clock because leaving event
 			streamMessage.CloseSend()
 			clientLogger.Println("[DISCONNECTED]")
 			<-waitc
 			return;
-
 		}
 
-		logicalClock++ // Increment clock on event: Sent Message
+		clientLogicalClock++ // Increment clock on event: Sent Message
         streamMessage.Send(&proto.Message{
             Id: id,
 			Participant:      participant,
             Message:   ": " + text,
-            Clock: logicalClock,
+            Clock: clientLogicalClock,
         })
-		clientLogger.Printf("[MESSAGE SENT]: " + text)
+		clientLogger.Printf("[MESSAGE SENT]: " + text) // Før eller efter sent message?
 	}
     }
 	
