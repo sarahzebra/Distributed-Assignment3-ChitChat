@@ -45,16 +45,14 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	// New creates a new Logger with log data destination, prefix, logging properties.
 	serverLogger := log.New(f, "[Server] ", log.Ldate|log.Ltime)
 
-	// --- A client is connected
+	// --- Client connects (Transport level)
 	var participant string;
-	
 	clientId++
 	
 	header := metadata.New(map[string]string{"client-id":strconv.Itoa(clientId)})
-
 	stream.SendHeader(header)
+
 	// Skal connection logges her i stedet for længere nede?
-	
 
 	for {
     	message, err := stream.Recv()
@@ -93,17 +91,17 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 		if err != nil {
     	  return err
     	}
-	
+
+		// --- Client connects --- (Application-Level)
+		serverLogger.Printf("[CONNECTION ESTABLISHED]: Client #" + id) // Køres lige nu 2 gange???
 		id := message.GetId()
 		log.Println(id) //have to log here, just so it doesnt brokker sig
 		participant = message.GetParticipant();
 		text := message.GetMessage();
 
 
-		// --- Client connects ---
 		s.mu.Lock()
 		s.clients[participant] = stream
-		serverLogger.Printf("[CONNECTION ESTABLISHED]: Client #" + id) // Køres lige nu 2 gange???
 
 
 		for p, st := range s.clients {
