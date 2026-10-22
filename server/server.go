@@ -109,7 +109,8 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 						Message:   text,
 						Clock: s.serverLogicalClock + 1, //increment 
 						}) 
-						serverLogger.Println("[JOIN MESSAGE HAS BEEN BROADCASTED] to client#" + id)
+						//Join skal rykkes (message gets logged multiple times)
+						serverLogger.Println("[JOIN MESSAGE HAS BEEN BROADCASTED] to client#" + id + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)))
 				}
 			}
 			s.mu.Unlock()
