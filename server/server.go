@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"sync"
+	
 
 	//"time"
 	//"context"
@@ -19,8 +20,7 @@ import (
 )
 
 var clientId int;
-var serverLogger = log.Default();
-
+	
 
 type ChitChatServer struct {
 	proto.UnimplementedChitChatServer
@@ -31,7 +31,8 @@ type ChitChatServer struct {
 
 func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
 
-
+	serverLogger := serverLogger()
+	
 	// --- [Event: Client connection] --- 
 	var participant string;
 	clientId++
@@ -41,6 +42,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	
 	header := metadata.New(map[string]string{"client-id":strconv.Itoa(clientId)})
 	stream.SendHeader(header)
+	//Evt. synkroniser af clock
 
 	for {
     	message, err := stream.Recv()
@@ -56,6 +58,10 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 
     	if err == io.EOF {
 			s.mu.Lock() // We're deleting from s.clients so we should lock 
+
+			if len(s.clients) <= 0 {
+				//stream.GracefulStop();
+			}
 
 			// --- [Event: leaving event] --- 
 			ExitMessage := " has left the chat at " + strconv.Itoa(int(s.serverLogicalClock)) + "\n"
@@ -108,9 +114,8 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 
 func main() {
 	server := NewServer()
-
-	server.start_server()
 	
+	server.start_server()
 }
 
 func (s *ChitChatServer) start_server() {
@@ -119,15 +124,26 @@ func (s *ChitChatServer) start_server() {
 	if err != nil {
 		log.Fatalf("Did not work" + err.Error())
 	}
+	
+	// --- [Event: Server Startup] --- 
+	serverLogger := serverLogger()
+	serverLogger.Printf("Server startup")
 
 	proto.RegisterChitChatServer(grpcServer, s)
 
 	err = grpcServer.Serve(listener)
 
+	// --- [Event: Server Shutdown] --- 
+	serverLogger.Printf("Server shutdown")
+
 	if err != nil {
 		log.Fatalf("Did not work")
 	}
 
+}
+
+func serverLogger() *log.Logger {
+	
 	// --- Opens or creates a new server log
 	const append = os.O_APPEND; // adss new logs to the end of the file
 	const create = os.O_CREATE; // creates the file if it doesn't exist
@@ -139,10 +155,7 @@ func (s *ChitChatServer) start_server() {
 	}
 	
 	// New creates a new Logger with log data destination, prefix, logging properties.
-	serverLogger = log.New(f, "[Server] ", log.Ldate|log.Ltime)
-
-	defer f.Close()
-
+	return log.New(f, "[Server] ", log.Ldate|log.Ltime)
 }
 
 func NewServer() *ChitChatServer {

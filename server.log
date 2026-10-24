@@ -1,41 +1,19 @@
-[Server] 2026/10/24 16:07:12 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 5
-[Server] 2026/10/24 16:07:15 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 7
-[Server] 2026/10/24 16:07:15 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 8
-[Server] 2026/10/24 16:07:19 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 10
-[Server] 2026/10/24 16:07:19 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 11
-[Server] 2026/10/24 16:07:19 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 12
-[Server] 2026/10/24 16:07:26 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 16
-[Server] 2026/10/24 16:07:26 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 17
-[Server] 2026/10/24 16:07:26 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 18
-[Server] 2026/10/24 16:07:31 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 21
-[Server] 2026/10/24 16:07:31 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 22
-[Server] 2026/10/24 16:07:31 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 23
-[Server] 2026/10/24 16:07:34 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 27
-[Server] 2026/10/24 16:07:34 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 28
-[Server] 2026/10/24 16:07:34 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 29
-[Server] 2026/10/24 16:09:40 [CLIENT DISCONNECTED]: Client juicy jules
-[Server] 2026/10/24 16:10:08 [CLIENT #4 HAS BEEN CONNECTED]
-[Server] 2026/10/24 16:10:11 [MESSAGE HAS BEEN BROADCASTED] to client#4 at logical timestamp: 33
-[Server] 2026/10/24 16:10:11 [MESSAGE HAS BEEN BROADCASTED] to client#4 at logical timestamp: 34
-[Server] 2026/10/24 16:10:11 [MESSAGE HAS BEEN BROADCASTED] to client#4 at logical timestamp: 35
-[Server] 2026/10/24 16:10:25 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 38
-[Server] 2026/10/24 16:10:25 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 39
-[Server] 2026/10/24 16:10:25 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 40
-[Server] 2026/10/24 16:13:44 [CLIENT #1 HAS BEEN CONNECTED]
-[Server] 2026/10/24 16:13:45 [CLIENT #2 HAS BEEN CONNECTED]
-[Server] 2026/10/24 16:13:47 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
-[Server] 2026/10/24 16:13:49 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 6
-[Server] 2026/10/24 16:13:49 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 7
-[Server] 2026/10/24 16:13:51 [CLIENT #3 HAS BEEN CONNECTED]
-[Server] 2026/10/24 16:13:52 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 10
-[Server] 2026/10/24 16:13:52 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 11
-[Server] 2026/10/24 16:13:52 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 12
-[Server] 2026/10/24 16:13:54 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 16
-[Server] 2026/10/24 16:13:54 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 17
-[Server] 2026/10/24 16:13:54 [MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 18
-[Server] 2026/10/24 16:13:56 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 22
-[Server] 2026/10/24 16:13:56 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 23
-[Server] 2026/10/24 16:13:56 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 24
-[Server] 2026/10/24 16:14:00 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 28
-[Server] 2026/10/24 16:14:00 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 29
-[Server] 2026/10/24 16:14:00 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 30
+[Server] 2026/10/24 16:47:10 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/24 16:47:25 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/24 16:47:25 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/24 16:50:15 Startudefer f.Close()p
+[Server] 2026/10/24 16:54:15 Start
+[Server] 2026/10/24 17:00:20 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/24 17:00:21 [CLIENT #2 HAS BEEN CONNECTED]
+[Server] 2026/10/24 17:00:26 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/24 17:00:28 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 6
+[Server] 2026/10/24 17:00:28 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 7
+[Server] 2026/10/24 17:00:30 [CLIENT DISCONNECTED]: Client g
+[Server] 2026/10/24 17:00:32 [CLIENT DISCONNECTED]: Client h
+[Server] 2026/10/24 17:06:23 Server startup
+[Server] 2026/10/24 17:16:34 Server startup
+[Server] 2026/10/24 17:17:09 Server startup
+[Server] 2026/10/24 17:45:06 Server startup
+[Server] 2026/10/24 17:45:08 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/24 17:45:15 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/24 17:45:15 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
