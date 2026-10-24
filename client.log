@@ -30,3 +30,36 @@
 [Client #1] 2026/10/21 19:48:28 [JOINED]
 [Client #1] 2026/10/21 19:58:32 [JOINED]
 [Client #1] 2026/10/21 19:58:38 [DISCONNECTED]
+[Client #1] 2026/10/24 15:32:17 [1CONNECTED]
+[Client #2] 2026/10/24 15:32:25 [2CONNECTED]
+[Client #1] 2026/10/24 15:32:33 [MESSAGE RECIEVED] has joined the chat at 1
+ at logical timestamp: 5
+[Client #2] 2026/10/24 15:32:50 [MESSAGE RECIEVED] has joined the chat at 1
+ at logical timestamp: 6
+[Client #1] 2026/10/24 15:32:50 [MESSAGE RECIEVED] has joined the chat at 1
+ at logical timestamp: 6
+[Client #3] 2026/10/24 15:32:59 [3CONNECTED]
+[Client #1] 2026/10/24 15:33:03 [MESSAGE RECIEVED] has joined the chat at 1
+ at logical timestamp: 8
+[Client #3] 2026/10/24 15:33:03 [MESSAGE RECIEVED] has joined the chat at 1
+ at logical timestamp: 8
+[Client #2] 2026/10/24 15:33:03 [MESSAGE RECIEVED] has joined the chat at 1
+ at logical timestamp: 8
+[Client #1] 2026/10/24 15:33:05 [MESSAGE RECIEVED]: hej
+ at logical timestamp: 12
+[Client #3] 2026/10/24 15:33:05 [MESSAGE RECIEVED]: hej
+ at logical timestamp: 12
+[Client #2] 2026/10/24 15:33:05 [MESSAGE RECIEVED]: hej
+ at logical timestamp: 12
+[Client #3] 2026/10/24 15:33:07 [MESSAGE RECIEVED]: hejjj
+ at logical timestamp: 16
+[Client #2] 2026/10/24 15:33:07 [MESSAGE RECIEVED]: hejjj
+ at logical timestamp: 16
+[Client #1] 2026/10/24 15:33:07 [MESSAGE RECIEVED]: hejjj
+ at logical timestamp: 16
+[Client #1] 2026/10/24 15:33:10 [MESSAGE RECIEVED]: halløj
+ at logical timestamp: 20
+[Client #3] 2026/10/24 15:33:10 [MESSAGE RECIEVED]: halløj
+ at logical timestamp: 20
+[Client #2] 2026/10/24 15:33:10 [MESSAGE RECIEVED]: halløj
+ at logical timestamp: 20

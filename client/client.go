@@ -57,7 +57,7 @@ func main() {
 	
 	// --- [Event: Client connected] ---
 	clientLogicalClock++ // Inkrementerer fordi vi er connected
-	clientLogger.Println("[" + id + "CONNECTED]") // X Client jconnected
+	clientLogger.Println("[CONNECTED]") // X Client connected
 
 	waitc := make(chan struct{})
 	
@@ -67,11 +67,14 @@ func main() {
 	}
 
 
-	// --- Client joins chat ---
+	// --- [Event: Client joins chat] ---
 	fmt.Print("Enter your name: ")
 
 	participant, _:= reader.ReadString('\n')
 	participant = strings.TrimSpace(participant)
+
+	clientLogicalClock++ 
+	clientLogger.Println("[JOINED MESSAGE SENT TO SERVER]") 
 
 	joinMessage := " has joined the chat at " + strconv.Itoa(int(clientLogicalClock)) + "\n"
 	streamMessage.Send(&proto.Message{
@@ -87,7 +90,7 @@ func main() {
     go func() {
 		defer close(waitc)
         for {
-			// --- Incoming message ---
+			// --- [Event: Incoming message] ---
             msg, err := streamMessage.Recv()
             if err != nil {
 				if(!leaving){
@@ -98,12 +101,14 @@ func main() {
 
 			// --- Sync with other "nodes" clock and increment
 			if msg.GetClock() > clientLogicalClock {
+				clientLogger.Printf("Sync egen clock: " + strconv.Itoa(int(clientLogicalClock)) + " med anden clock: " + strconv.Itoa(int(msg.GetClock())))
 				clientLogicalClock = msg.GetClock()
 			}
+			// --- [Event: Message received] ---
 			clientLogicalClock++
+			clientLogger.Printf("[MESSAGE RECEIVED]" + msg.Message + " at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
 
             fmt.Print(msg.Participant, msg.Message)
-			clientLogger.Printf("[MESSAGE RECIEVED]" + msg.Message + " at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
         }
     }()
 	
@@ -113,24 +118,29 @@ func main() {
 
 		if(utf8.RuneCountInString(text) > 128){
 			fmt.Println("Message is too long")
-			
-		} else {
+		
+		} else { 
+
+		// --- [Event: Client disconnected] ---
 		if(text == "/leave\n"){
 			leaving = true;
 			clientLogicalClock++ // increment clock because leaving event
-			streamMessage.CloseSend()
 			clientLogger.Println("[DISCONNECTED]")
+			streamMessage.CloseSend()
 			<-waitc
 			return;
 		}
 
-		clientLogicalClock++ // Increment clock on event: Sent Message
+		// --- [Event: Message sent] ---
+		clientLogicalClock++ 
+		clientLogger.Println("[MESSAGE SENT TO SERVER]")
         streamMessage.Send(&proto.Message{
             Id: id,
 			Participant:      participant,
             Message:   ": " + text,
             Clock: clientLogicalClock,
         })
+
 		
 	}
     }

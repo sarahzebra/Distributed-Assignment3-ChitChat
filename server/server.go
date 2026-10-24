@@ -9,9 +9,7 @@ import (
 	"os"
 	"strconv"
 	"sync"
-
 	//"time"
-
 	//"context"
 
 
@@ -27,7 +25,6 @@ type ChitChatServer struct {
 	clients map[string]proto.ChitChat_PostMessageServer
 	serverLogicalClock int64
 }
-
 
 func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
 	
@@ -50,6 +47,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	// --- [Event: Client connection] --- 
 	var participant string;
 	clientId++
+
 	s.serverLogicalClock++
 	serverLogger.Println("[CLIENT #" + strconv.Itoa(clientId) + " HAS BEEN CONNECTED]")
 	
@@ -58,7 +56,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 
 	for {
     	message, err := stream.Recv()
-
+		
 		// --- Sync with other "nodes" clock and increment
 		if message.GetClock() > s.serverLogicalClock { // Skal det være lige før leaving event eller broadcasting besked eller må det godt ske lige når beskeden modtages?
 			s.serverLogicalClock = message.GetClock()
@@ -69,7 +67,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	if err == io.EOF {
 			s.mu.Lock() // We're deleting from s.clients so we should lock 
 
-			// --- Leaving event ---
+			// --- [Event: leaving event] --- 
 			ExitMessage := " has left the chat at " + strconv.Itoa(int(s.serverLogicalClock)) + "\n"
 			
 			for p, st := range s.clients {

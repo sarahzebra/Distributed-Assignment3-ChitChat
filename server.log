@@ -20,3 +20,21 @@
 [Server] 2026/10/21 19:58:31 hellooo
 [Server] 2026/10/21 19:58:32 [CONNECTION ESTABLISHED]: Client #1
 [Server] 2026/10/21 19:58:38 [CLIENT DISCONNECTED]: Client #s
+[Server] 2026/10/24 15:32:17 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/24 15:32:25 [CLIENT #2 HAS BEEN CONNECTED]
+[Server] 2026/10/24 15:32:33 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 3
+[Server] 2026/10/24 15:32:50 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 4
+[Server] 2026/10/24 15:32:50 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 4
+[Server] 2026/10/24 15:32:59 [CLIENT #3 HAS BEEN CONNECTED]
+[Server] 2026/10/24 15:33:03 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 6
+[Server] 2026/10/24 15:33:03 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 6
+[Server] 2026/10/24 15:33:03 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 6
+[Server] 2026/10/24 15:33:05 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 10
+[Server] 2026/10/24 15:33:05 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 10
+[Server] 2026/10/24 15:33:05 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 10
+[Server] 2026/10/24 15:33:07 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 14
+[Server] 2026/10/24 15:33:07 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 14
+[Server] 2026/10/24 15:33:07 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 14
+[Server] 2026/10/24 15:33:10 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 18
+[Server] 2026/10/24 15:33:10 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 18
+[Server] 2026/10/24 15:33:10 [JOIN MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 18
