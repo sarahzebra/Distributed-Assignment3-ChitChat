@@ -9,15 +9,18 @@ import (
 	"os"
 	"strconv"
 	"sync"
+
 	//"time"
 	//"context"
 
-
+	//"google.golang.org/genproto/googleapis/cloud/notebooks/logging/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )
 
 var clientId int;
+var serverLogger = log.Default();
+
 
 type ChitChatServer struct {
 	proto.UnimplementedChitChatServer
@@ -27,21 +30,6 @@ type ChitChatServer struct {
 }
 
 func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Message, proto.Message]) error {
-	
-	// --- Opens or creates a new server log
-	const append = os.O_APPEND; // adss new logs to the end of the file
-	const create = os.O_CREATE; // creates the file if it doesn't exist
-	const wronly = os.O_WRONLY; // opens the file for writing only
-	
-	f, err := os.OpenFile("server.log", append|create|wronly, 0666)
-	if err != nil {
-		log.Fatalf("Error opening file: %v", err) 
-	}
-	defer f.Close()
-	
-	// New creates a new Logger with log data destination, prefix, logging properties.
-	serverLogger := log.New(f, "[Server] ", log.Ldate|log.Ltime)
-
 
 
 	// --- [Event: Client connection] --- 
@@ -57,8 +45,10 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	for {
     	message, err := stream.Recv()
 		
+		// --- [Event: Client connection] --- 
 		// --- Sync with other "nodes" clock and increment
 		if message.GetClock() > s.serverLogicalClock { // Skal det være lige før leaving event eller broadcasting besked eller må det godt ske lige når beskeden modtages?
+			serverLogger.Printf("Sync egen clock: " + strconv.Itoa(int(s.serverLogicalClock)) + " med anden clock: " + strconv.Itoa(int(message.GetClock())))
 			s.serverLogicalClock = message.GetClock()
 		}
 		s.serverLogicalClock++
@@ -92,7 +82,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	  return err
     	}
 
-		// --- [Event: Broadcasting join message] --- 
+		// --- [Event: Broadcasting message] --- 
 		id := message.GetId()
 		participant = message.GetParticipant();
 		text := message.GetMessage();
@@ -101,14 +91,15 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 		s.clients[participant] = stream
 
 		for p, st := range s.clients {
-				if p != participant || p == participant { // Skal lige fixes??? Message should be sent to all clients, including the one that sent it.
+			s.serverLogicalClock++;
+				if p != participant || p == participant { //Message should be sent to all clients, including the one that sent it.
 					_ = st.Send(&proto.Message{
 						Participant:      participant,
 						Message:   text,
-						Clock: s.serverLogicalClock + 1, //increment 
+						Clock: s.serverLogicalClock, //increment 
 						}) 
 						//Join skal rykkes (message gets logged multiple times)
-						serverLogger.Println("[JOIN MESSAGE HAS BEEN BROADCASTED] to client#" + id + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)))
+						serverLogger.Println("[MESSAGE HAS BEEN BROADCASTED] to client#" + id + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)))
 				}
 			}
 			s.mu.Unlock()
@@ -136,6 +127,21 @@ func (s *ChitChatServer) start_server() {
 	if err != nil {
 		log.Fatalf("Did not work")
 	}
+
+	// --- Opens or creates a new server log
+	const append = os.O_APPEND; // adss new logs to the end of the file
+	const create = os.O_CREATE; // creates the file if it doesn't exist
+	const wronly = os.O_WRONLY; // opens the file for writing only
+	
+	f, err := os.OpenFile("server.log", append|create|wronly, 0666)
+	if err != nil {
+		log.Fatalf("Error opening file: %v", err) 
+	}
+	
+	// New creates a new Logger with log data destination, prefix, logging properties.
+	serverLogger = log.New(f, "[Server] ", log.Ldate|log.Ltime)
+
+	defer f.Close()
 
 }
 

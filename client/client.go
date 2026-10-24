@@ -74,7 +74,7 @@ func main() {
 	participant = strings.TrimSpace(participant)
 
 	clientLogicalClock++ 
-	clientLogger.Println("[JOINED MESSAGE SENT TO SERVER]") 
+	clientLogger.Println("[JOINED MESSAGE SENT TO SERVER] at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
 
 	joinMessage := " has joined the chat at " + strconv.Itoa(int(clientLogicalClock)) + "\n"
 	streamMessage.Send(&proto.Message{
@@ -106,7 +106,7 @@ func main() {
 			}
 			// --- [Event: Message received] ---
 			clientLogicalClock++
-			clientLogger.Printf("[MESSAGE RECEIVED]" + msg.Message + " at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
+			clientLogger.Printf("[MESSAGE RECEIVED]" + strings.TrimSpace(msg.Message) + " at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
 
             fmt.Print(msg.Participant, msg.Message)
         }
