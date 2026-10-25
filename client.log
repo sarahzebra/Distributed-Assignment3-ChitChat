@@ -118,3 +118,13 @@
 [Client #1] 2026/10/25 14:51:15 Sync egen clock: 2 med anden clock: 4
 [Client #1] 2026/10/25 14:51:15 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
 [Client #1] 2026/10/25 14:51:17 [DISCONNECTED]
+[Client #1] 2026/10/25 14:59:57 [CONNECTED]
+[Client #1] 2026/10/25 14:59:59 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:59:59 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:59:59 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 15:00:00 [DISCONNECTED]
+[Client #1] 2026/10/25 15:00:31 [CONNECTED]
+[Client #1] 2026/10/25 15:00:32 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 15:00:32 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 15:00:32 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 15:00:34 [DISCONNECTED]

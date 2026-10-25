@@ -101,3 +101,15 @@
 [Server] 2026/10/25 14:51:17 [CLIENT DISCONNECTED]: Client julie
 [Server] 2026/10/25 14:51:17 [SERVER SHUTDOWN] at %!(EXTRA int64=5)
 [Server] 2026/10/25 14:51:17 Server shutdown
+[Server] 2026/10/25 14:59:51 Server startup
+[Server] 2026/10/25 14:59:57 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:59:59 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:59:59 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 15:00:00 [CLIENT DISCONNECTED]: Client Julie
+[Server] 2026/10/25 15:00:00 [SERVER SHUTDOWN] at %!(EXTRA int64=6)
+[Server] 2026/10/25 15:00:29 Server startup
+[Server] 2026/10/25 15:00:31 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 15:00:32 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 15:00:32 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 15:00:34 [CLIENT DISCONNECTED]: Client Julie
+[Server] 2026/10/25 15:00:34 [SERVER SHUTDOWN] at %!(EXTRA string=6)

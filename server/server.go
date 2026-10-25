@@ -2,8 +2,6 @@ package main
 
 import (
 	proto "assignment-3/grpc"
-	"fmt"
-	//"fmt"
 	"io"
 	"log"
 	"net"
@@ -84,7 +82,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 				// --- [Event: server shutdown] ---
 				s.serverLogicalClock++
 				grpcServer.Stop()
-				serverLogger.Printf("[SERVER SHUTDOWN] at ", s.serverLogicalClock)
+				serverLogger.Printf("[SERVER SHUTDOWN] at logical timestamp:", strconv.Itoa(int(s.serverLogicalClock)))
 			}
 			
 				
