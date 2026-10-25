@@ -81,6 +81,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 			s.mu.Unlock()
 
 			if len(s.clients) <= 1 {
+				// --- [Event: server shutdown] ---
 				s.serverLogicalClock++
 				grpcServer.Stop()
 				serverLogger.Printf("[SERVER SHUTDOWN] at ", s.serverLogicalClock)
@@ -143,9 +144,6 @@ func (s *ChitChatServer) start_server() {
 
 	err = grpcServer.Serve(listener)
 
-
-	// --- [Event: Server Shutdown] --- 
-	serverLogger.Printf("Server shutdown")
 
 	if err != nil {
 		log.Fatalf("Did not work")
