@@ -2,7 +2,7 @@ syntax = "proto3";
 option go_package = "assignment-3/grpc/proto";
 
 message Message {
-    string id = 1;
+    int64 id = 1;
     string participant = 2;
     string message = 3;
     int64 clock = 4;

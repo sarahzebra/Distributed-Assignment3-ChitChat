@@ -23,7 +23,7 @@ const (
 
 type Message struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Participant   string                 `protobuf:"bytes,2,opt,name=participant,proto3" json:"participant,omitempty"`
 	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 	Clock         int64                  `protobuf:"varint,4,opt,name=clock,proto3" json:"clock,omitempty"`
@@ -61,11 +61,11 @@ func (*Message) Descriptor() ([]byte, []int) {
 	return file_grpc_proto_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Message) GetId() string {
+func (x *Message) GetId() int64 {
 	if x != nil {
 		return x.Id
 	}
-	return ""
+	return 0
 }
 
 func (x *Message) GetParticipant() string {
@@ -131,7 +131,7 @@ const file_grpc_proto_proto_rawDesc = "" +
 	"\n" +
 	"\x10grpc/proto.proto\"k\n" +
 	"\aMessage\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12 \n" +
 	"\vparticipant\x18\x02 \x01(\tR\vparticipant\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\x12\x14\n" +
 	"\x05clock\x18\x04 \x01(\x03R\x05clock\"\a\n" +

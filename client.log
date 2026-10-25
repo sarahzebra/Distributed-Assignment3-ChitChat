@@ -55,3 +55,65 @@
 [Client #1] 2026/10/25 16:19:08 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
 [Client #1] 2026/10/25 16:19:08 Sync egen clock: 2 med anden clock: 4
 [Client #1] 2026/10/25 16:19:08 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 16:39:31 [CONNECTED] at: 1
+[Client #1] 2026/10/25 16:39:33 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 16:39:33 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 16:39:33 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #2] 2026/10/25 16:39:38 [CONNECTED] at: 1
+[Client #2] 2026/10/25 16:39:39 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #2] 2026/10/25 16:39:39 Sync egen clock: 2 med anden clock: 8
+[Client #2] 2026/10/25 16:39:39 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 9
+[Client #1] 2026/10/25 16:39:39 Sync egen clock: 5 med anden clock: 7
+[Client #1] 2026/10/25 16:39:39 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 8
+[Client #1] 2026/10/25 16:41:32 [CONNECTED] at: 1
+[Client #1] 2026/10/25 16:41:34 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 16:41:34 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 16:41:34 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #2] 2026/10/25 16:41:38 [CONNECTED] at: 1
+[Client #2] 2026/10/25 16:41:40 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #2] 2026/10/25 16:41:40 Sync egen clock: 2 med anden clock: 8
+[Client #2] 2026/10/25 16:41:40 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 9
+[Client #1] 2026/10/25 16:41:40 Sync egen clock: 5 med anden clock: 7
+[Client #1] 2026/10/25 16:41:40 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 8
+[Client #1] 2026/10/25 16:41:43 [MESSAGE SENT TO SERVER] at: 9
+[Client #2] 2026/10/25 16:41:43 Sync egen clock: 9 med anden clock: 11
+[Client #2] 2026/10/25 16:41:43 [MESSAGE RECEIVED]: hey at logical timestamp: 12
+[Client #1] 2026/10/25 16:42:05 [DISCONNECTED] at: 10
+[Client #1] 2026/10/25 16:46:48 [CONNECTED] at: 1
+[Client #1] 2026/10/25 16:46:50 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 16:46:50 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 16:46:50 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 16:46:51 [DISCONNECTED] at: 6
+[Client #1] 2026/10/25 16:47:48 [CONNECTED] at: 1
+[Client #1] 2026/10/25 16:47:50 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 16:47:50 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 16:47:50 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 16:47:51 [DISCONNECTED] at: 6
+[Client #1] 2026/10/25 16:48:18 [CONNECTED] at: 1
+[Client #1] 2026/10/25 16:48:20 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 16:48:20 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 16:48:20 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #2] 2026/10/25 16:48:28 [CONNECTED] at: 1
+[Client #2] 2026/10/25 16:48:31 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #2] 2026/10/25 16:48:31 Sync egen clock: 2 med anden clock: 7
+[Client #2] 2026/10/25 16:48:31 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 8
+[Client #1] 2026/10/25 16:48:31 Sync egen clock: 5 med anden clock: 8
+[Client #1] 2026/10/25 16:48:31 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 9
+[Client #2] 2026/10/25 16:48:32 [MESSAGE SENT TO SERVER] at: 9
+[Client #1] 2026/10/25 16:48:32 Sync egen clock: 9 med anden clock: 11
+[Client #1] 2026/10/25 16:48:32 [MESSAGE RECEIVED]: hey at logical timestamp: 12
+[Client #1] 2026/10/25 16:54:40 [MESSAGE SENT TO SERVER] at: 13
+[Client #2] 2026/10/25 16:54:40 Sync egen clock: 9 med anden clock: 15
+[Client #2] 2026/10/25 16:54:40 [MESSAGE RECEIVED]: hey at logical timestamp: 16
+[Client #1] 2026/10/25 16:54:44 [MESSAGE SENT TO SERVER] at: 14
+[Client #2] 2026/10/25 16:54:44 Sync egen clock: 16 med anden clock: 17
+[Client #2] 2026/10/25 16:54:44 [MESSAGE RECEIVED]: wassup at logical timestamp: 18
+[Client #1] 2026/10/25 16:54:49 [MESSAGE SENT TO SERVER] at: 15
+[Client #2] 2026/10/25 16:54:49 Sync egen clock: 18 med anden clock: 19
+[Client #2] 2026/10/25 16:54:49 [MESSAGE RECEIVED]: I am leving now g at logical timestamp: 20
+[Client #1] 2026/10/25 16:54:50 [DISCONNECTED] at: 16
+[Client #2] 2026/10/25 16:54:50 Sync egen clock: 20 med anden clock: 21
+[Client #2] 2026/10/25 16:54:50 [MESSAGE RECEIVED]has left the chat at server clock: 20 at logical timestamp: 22
+[Client #2] 2026/10/25 16:54:55 [MESSAGE SENT TO SERVER] at: 23
+[Client #2] 2026/10/25 16:54:57 [MESSAGE SENT TO SERVER] at: 24
+[Client #2] 2026/10/25 16:54:59 [DISCONNECTED] at: 25

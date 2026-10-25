@@ -48,11 +48,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to get header from stream: %v", err) 
 	}
-	id := header["client-id"][0] //handle error here??? see here:https://github.com/grpc/grpc-go/blob/master/examples/features/metadata/client/main.go
-	
+	idString := header["client-id"][0] //handle error here??? see here:https://github.com/grpc/grpc-go/blob/master/examples/features/metadata/client/main.go
+	id, err := strconv.ParseInt(idString, 10, 64)
 
 	// New creates a new Logger with log data destination, prefix, logging properties.
-	clientLogger := log.New(f, "[Client #" + id + "] ", log.Ldate|log.Ltime) // skift log.Ldate... til 0 når vi vil have logical time ind
+	clientLogger := log.New(f, "[Client #" + idString + "] ", log.Ldate|log.Ltime) // skift log.Ldate... til 0 når vi vil have logical time ind
 
 	
 	// --- [Event: Client connected] ---

@@ -27,7 +27,7 @@ var grpcServer *grpc.Server;
 type ChitChatServer struct {
 	proto.UnimplementedChitChatServer
 	mu      sync.Mutex
-	clients map[string]proto.ChitChat_PostMessageServer
+	clients map[int64]proto.ChitChat_PostMessageServer
 	serverLogicalClock int64
 }
 
@@ -36,6 +36,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	serverLogger := serverLogger()
 	
 	// --- [Event: Client connection] --- 
+	var clientIdMessage int64;
 	var participant string;
 	clientId++
 
@@ -51,7 +52,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 		
 		// --- [Event: Client connection] --- 
 		// --- Sync with other "nodes" clock and increment
-		serverLogger.Printf("Tjek for sync ServerClock: " + strconv.Itoa(int(s.serverLogicalClock)) + " med client #" +  message.Id + " med ClientClock: " + strconv.Itoa(int(message.GetClock())))
+		serverLogger.Printf("Tjek for sync ServerClock: " + strconv.Itoa(int(s.serverLogicalClock)) + " med client #" +  strconv.Itoa(int(clientIdMessage)) + " med ClientClock: " + strconv.Itoa(int(message.GetClock())))
 		if message.GetClock() > s.serverLogicalClock { // Skal det være lige før leaving event eller broadcasting besked eller må det godt ske lige når beskeden modtages?
 			s.serverLogicalClock = message.GetClock()
 		}
@@ -68,9 +69,9 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 			ExitMessage := " has left the chat at server clock: " + strconv.Itoa(int(s.serverLogicalClock)) + "\n"
 
 			for p, st := range s.clients {
-            if p != participant {
+            if p != clientIdMessage {
 				s.serverLogicalClock++;
-				serverLogger.Println("[EXIT MESSAGE HAS BEEN BROADCASTED] to client#" + message.GetId() + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
+				serverLogger.Println("[EXIT MESSAGE HAS BEEN BROADCASTED] to client#" + strconv.Itoa(int(clientIdMessage)) + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
                 _ = st.Send(&proto.Message{
             		Participant:      participant,
             		Message:   ExitMessage,
@@ -80,7 +81,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 				
 			}
 			serverLogger.Printf("[CLIENT DISCONNECTED]: Client " + participant +  " at server clock: " + strconv.Itoa(int(s.serverLogicalClock))) // Missing the client ID here...
-			delete(s.clients,participant)
+			delete(s.clients,clientIdMessage)
 			s.mu.Unlock()
 
 			if len(s.clients) <= 0 {
@@ -101,18 +102,18 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	}
 
 		// --- [Event: Broadcasting message] --- 
-		// id := message.GetId()
+		clientIdMessage = message.GetId();
 		participant = message.GetParticipant();
 		text := message.GetMessage();
 		ClientTimestamp := message.GetClock()
 
 		s.mu.Lock()
-		s.clients[participant] = stream
+		s.clients[clientIdMessage] = stream
 
 		for p, st := range s.clients {
-				if p != participant { //Join Message should be sent to all clients, including the one that sent it.
+				if p != clientIdMessage { //Join Message should be sent to all clients, including the one that sent it.
 					s.serverLogicalClock++;
-					serverLogger.Println("[MESSAGE: '" + text + "' HAS BEEN BROADCASTED] to client#" + p + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
+					serverLogger.Println("[MESSAGE: '" + strings.TrimSpace(text) + "' HAS BEEN BROADCASTED] to client#" + strconv.Itoa(int(clientIdMessage)) + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
 					_ = st.Send(&proto.Message{
 						Participant:      participant,
 						Message:   text,
@@ -122,10 +123,10 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 						
 				}
 
-				if p == participant{
+				if p == clientIdMessage{
 					if(strings.Contains(text, "has joined the chat at " + strconv.Itoa(int(ClientTimestamp)))){
 					s.serverLogicalClock++;
-					serverLogger.Println("[MESSAGE: '" + participant + " " + strings.TrimSpace(text) + "' HAS BEEN BROADCASTED] to client#" + p + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
+					serverLogger.Println("[MESSAGE: '" + participant + " " + strings.TrimSpace(text) + "' HAS BEEN BROADCASTED] to client#" + strconv.Itoa(int(clientIdMessage)) + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
 					_ = st.Send(&proto.Message{
 						Participant:      participant,
 						Message:   text,
@@ -187,6 +188,6 @@ func serverLogger() *log.Logger {
 
 func NewServer() *ChitChatServer {
     return &ChitChatServer{
-        clients: make(map[string]proto.ChitChat_PostMessageServer),
+        clients: make(map[int64]proto.ChitChat_PostMessageServer),
     }
 }

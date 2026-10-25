@@ -1,72 +1,34 @@
-[Server] 2026/10/25 15:26:43 Server startup at: 0
-[Server] 2026/10/25 15:26:45 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 15:26:46 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 15:26:46 ServerClock efter sync: 3
-[Server] 2026/10/25 15:26:49 [CLIENT #2 HAS BEEN CONNECTED at server clock: 4
-[Server] 2026/10/25 15:26:50 Tjek for sync ServerClock: 4 med client #2 med ClientClock: 2
-[Server] 2026/10/25 15:26:50 ServerClock efter sync: 5
-[Server] 2026/10/25 15:26:50 [MESSAGE: ' has joined the chat at 2
-' HAS BEEN BROADCASTED] to client#A at logical timestamp: 6 with amount of clients: 2
-[Server] 2026/10/25 15:26:53 Tjek for sync ServerClock: 6 med client #1 med ClientClock: 8
-[Server] 2026/10/25 15:26:53 ServerClock efter sync: 9
-[Server] 2026/10/25 15:26:53 [MESSAGE: ': hej
-' HAS BEEN BROADCASTED] to client#C at logical timestamp: 10 with amount of clients: 2
-[Server] 2026/10/25 16:09:25 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:09:30 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:09:31 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 16:09:31 ServerClock efter sync: 3
-[Server] 2026/10/25 16:09:37 Tjek for sync ServerClock: 3 med client #1 med ClientClock: 3
-[Server] 2026/10/25 16:09:37 ServerClock efter sync: 4
-[Server] 2026/10/25 16:09:51 [CLIENT #2 HAS BEEN CONNECTED at server clock: 5
-[Server] 2026/10/25 16:09:51 Tjek for sync ServerClock: 5 med client #2 med ClientClock: 2
-[Server] 2026/10/25 16:09:51 ServerClock efter sync: 6
-[Server] 2026/10/25 16:09:51 [MESSAGE: ' has joined the chat at 2
-' HAS BEEN BROADCASTED] to client#Julie at logical timestamp: 7 with amount of clients: 2
-[Server] 2026/10/25 16:09:53 Tjek for sync ServerClock: 7 med client #2 med ClientClock: 3
-[Server] 2026/10/25 16:09:53 ServerClock efter sync: 8
-[Server] 2026/10/25 16:09:53 [MESSAGE: ': julie
-' HAS BEEN BROADCASTED] to client#Julie at logical timestamp: 9 with amount of clients: 2
-[Server] 2026/10/25 16:09:55 Tjek for sync ServerClock: 9 med client #2 med ClientClock: 4
-[Server] 2026/10/25 16:09:55 ServerClock efter sync: 10
-[Server] 2026/10/25 16:09:55 [MESSAGE: ': jjf
-' HAS BEEN BROADCASTED] to client#Julie at logical timestamp: 11 with amount of clients: 2
-[Server] 2026/10/25 16:10:15 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:10:19 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:10:21 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 16:10:21 ServerClock efter sync: 3
-[Server] 2026/10/25 16:10:45 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:10:46 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:10:48 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 16:10:48 ServerClock efter sync: 3
-[Server] 2026/10/25 16:12:24 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:12:27 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:12:29 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 16:12:29 ServerClock efter sync: 3
-[Server] 2026/10/25 16:12:39 Tjek for sync ServerClock: 3 med client #1 med ClientClock: 5
-[Server] 2026/10/25 16:12:39 ServerClock efter sync: 6
-[Server] 2026/10/25 16:12:43 [CLIENT #2 HAS BEEN CONNECTED at server clock: 7
-[Server] 2026/10/25 16:12:44 Tjek for sync ServerClock: 7 med client #2 med ClientClock: 2
-[Server] 2026/10/25 16:12:44 ServerClock efter sync: 8
-[Server] 2026/10/25 16:14:35 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:14:36 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:14:38 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 16:14:38 ServerClock efter sync: 3
-[Server] 2026/10/25 16:14:38 [MESSAGE: ' has joined the chat at 2
-' HAS BEEN BROADCASTED] to client#julie at logical timestamp: 3 with amount of clients: 1
-[Server] 2026/10/25 16:15:16 Tjek for sync ServerClock: 3 med client #1 med ClientClock: 5
-[Server] 2026/10/25 16:15:16 ServerClock efter sync: 6
-[Server] 2026/10/25 16:16:27 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:16:29 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:16:30 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 16:16:30 ServerClock efter sync: 3
-[Server] 2026/10/25 16:16:30 [MESSAGE: 'Julie has joined the chat at 2' HAS BEEN BROADCASTED] to client#Julie at logical timestamp: 3 with amount of clients: 1
-[Server] 2026/10/25 16:18:24 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:18:26 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:18:27 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 16:18:27 ServerClock efter sync: 3
-[Server] 2026/10/25 16:18:27 [MESSAGE: 'julie has joined the chat at 2' HAS BEEN BROADCASTED] to client#julie at logical timestamp: 3 with amount of clients: 1
-[Server] 2026/10/25 16:19:04 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:19:06 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:19:08 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
-[Server] 2026/10/25 16:19:08 ServerClock efter sync: 3
-[Server] 2026/10/25 16:19:08 [MESSAGE: 'julie has joined the chat at 2' HAS BEEN BROADCASTED] to client#julie at logical timestamp: 4 with amount of clients: 1
+[Server] 2026/10/25 16:48:13 [SERVER STARTUP] at logical timestamp: 0
+[Server] 2026/10/25 16:48:18 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
+[Server] 2026/10/25 16:48:20 Tjek for sync ServerClock: 1 med client #0 med ClientClock: 2
+[Server] 2026/10/25 16:48:20 ServerClock efter sync: 3
+[Server] 2026/10/25 16:48:20 [MESSAGE: 'Julie has joined the chat at 2' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4 with amount of clients: 1
+[Server] 2026/10/25 16:48:28 [CLIENT #2 HAS BEEN CONNECTED at server clock: 5
+[Server] 2026/10/25 16:48:31 Tjek for sync ServerClock: 5 med client #0 med ClientClock: 2
+[Server] 2026/10/25 16:48:31 ServerClock efter sync: 6
+[Server] 2026/10/25 16:48:31 [MESSAGE: 'Sarah has joined the chat at 2' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 7 with amount of clients: 2
+[Server] 2026/10/25 16:48:31 [MESSAGE: 'has joined the chat at 2' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 8 with amount of clients: 2
+[Server] 2026/10/25 16:48:32 Tjek for sync ServerClock: 8 med client #2 med ClientClock: 9
+[Server] 2026/10/25 16:48:32 ServerClock efter sync: 10
+[Server] 2026/10/25 16:48:32 [MESSAGE: ': hey' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 11 with amount of clients: 2
+[Server] 2026/10/25 16:54:40 Tjek for sync ServerClock: 11 med client #1 med ClientClock: 13
+[Server] 2026/10/25 16:54:40 ServerClock efter sync: 14
+[Server] 2026/10/25 16:54:40 [MESSAGE: ': hey' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 15 with amount of clients: 2
+[Server] 2026/10/25 16:54:44 Tjek for sync ServerClock: 15 med client #1 med ClientClock: 14
+[Server] 2026/10/25 16:54:44 ServerClock efter sync: 16
+[Server] 2026/10/25 16:54:44 [MESSAGE: ': wassup' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 17 with amount of clients: 2
+[Server] 2026/10/25 16:54:49 Tjek for sync ServerClock: 17 med client #1 med ClientClock: 15
+[Server] 2026/10/25 16:54:49 ServerClock efter sync: 18
+[Server] 2026/10/25 16:54:49 [MESSAGE: ': I am leving now g' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 19 with amount of clients: 2
+[Server] 2026/10/25 16:54:50 Tjek for sync ServerClock: 19 med client #1 med ClientClock: 0
+[Server] 2026/10/25 16:54:50 ServerClock efter sync: 20
+[Server] 2026/10/25 16:54:50 [EXIT MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 21 with amount of clients: 2
+[Server] 2026/10/25 16:54:50 [CLIENT DISCONNECTED]: Client Julie at server clock: 21
+[Server] 2026/10/25 16:54:55 Tjek for sync ServerClock: 21 med client #2 med ClientClock: 23
+[Server] 2026/10/25 16:54:55 ServerClock efter sync: 24
+[Server] 2026/10/25 16:54:57 Tjek for sync ServerClock: 24 med client #2 med ClientClock: 24
+[Server] 2026/10/25 16:54:57 ServerClock efter sync: 25
+[Server] 2026/10/25 16:54:59 Tjek for sync ServerClock: 25 med client #2 med ClientClock: 0
+[Server] 2026/10/25 16:54:59 ServerClock efter sync: 26
+[Server] 2026/10/25 16:54:59 [CLIENT DISCONNECTED]: Client Sarah at server clock: 26
+[Server] 2026/10/25 16:54:59 [SERVER SHUTDOWN] at logical timestamp: 27
