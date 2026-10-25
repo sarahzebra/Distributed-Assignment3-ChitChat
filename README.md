@@ -20,12 +20,12 @@ In another terminal run a client using this command
 ```bash
 go run client/client.go
 ```
-If you want to run multiple client, you have to open up a new terminal every time.
+If you want to run multiple clients, you have to open up a new terminal every time.
 
 When running the client, you have to enter your name after the message 'Enter your name:' pops up in the terminal.
 
 ### Shutdown client
-If you want to make a client leave the chat use this command
+If you want to make a client leave the chat write this command in the terminal
 ```bash
 /leave
 ```
