@@ -1,0 +1,35 @@
+
+[Client #1] 2026/10/25 21:17:56 [CONNECTED] at logical timestamp: 1
+[Client #1] 2026/10/25 21:18:10 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 21:18:10 [MESSAGE 'Julie has joined the chat at client clock: 2' RECEIVED] at logical timestamp: 5
+[Client #2] 2026/10/25 21:18:36 [CONNECTED] at logical timestamp: 1
+[Client #2] 2026/10/25 21:18:40 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #2] 2026/10/25 21:18:40 [MESSAGE 'Sarah has joined the chat at client clock: 2' RECEIVED] at logical timestamp: 9
+[Client #1] 2026/10/25 21:18:40 [MESSAGE 'Sarah has joined the chat at client clock: 2' RECEIVED] at logical timestamp: 8
+[Client #2] 2026/10/25 21:18:47 [MESSAGE SENT TO SERVER] at logical timestamp: 10
+[Client #1] 2026/10/25 21:18:47 [MESSAGE 'Sarah: Heyy' RECEIVED] at logical timestamp: 13
+[Client #1] 2026/10/25 21:18:56 [MESSAGE SENT TO SERVER] at logical timestamp: 14
+[Client #2] 2026/10/25 21:18:56 [MESSAGE 'Julie: Hello!' RECEIVED] at logical timestamp: 17
+[Client #3] 2026/10/25 21:19:05 [CONNECTED] at logical timestamp: 1
+[Client #3] 2026/10/25 21:19:08 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #3] 2026/10/25 21:19:08 [MESSAGE 'Kirstine has joined the chat at client clock: 2' RECEIVED] at logical timestamp: 22
+[Client #1] 2026/10/25 21:19:08 [MESSAGE 'Kirstine has joined the chat at client clock: 2' RECEIVED] at logical timestamp: 20
+[Client #2] 2026/10/25 21:19:08 [MESSAGE 'Kirstine has joined the chat at client clock: 2' RECEIVED] at logical timestamp: 21
+[Client #2] 2026/10/25 21:19:23 [MESSAGE SENT TO SERVER] at logical timestamp: 22
+[Client #1] 2026/10/25 21:19:23 [MESSAGE 'Sarah: Had a good weekend?' RECEIVED] at logical timestamp: 25
+[Client #3] 2026/10/25 21:19:23 [MESSAGE 'Sarah: Had a good weekend?' RECEIVED] at logical timestamp: 26
+[Client #1] 2026/10/25 21:19:38 [MESSAGE SENT TO SERVER] at logical timestamp: 26
+[Client #2] 2026/10/25 21:19:38 [MESSAGE 'Julie: Yes! I finished my assignment for monday' RECEIVED] at logical timestamp: 29
+[Client #3] 2026/10/25 21:19:38 [MESSAGE 'Julie: Yes! I finished my assignment for monday' RECEIVED] at logical timestamp: 30
+[Client #3] 2026/10/25 21:19:40 [MESSAGE SENT TO SERVER] at logical timestamp: 31
+[Client #2] 2026/10/25 21:19:40 [MESSAGE 'Kirstine: Me too' RECEIVED] at logical timestamp: 35
+[Client #1] 2026/10/25 21:19:40 [MESSAGE 'Kirstine: Me too' RECEIVED] at logical timestamp: 34
+[Client #2] 2026/10/25 21:19:44 [MESSAGE SENT TO SERVER] at logical timestamp: 36
+[Client #3] 2026/10/25 21:19:44 [MESSAGE 'Sarah: Nice' RECEIVED] at logical timestamp: 40
+[Client #1] 2026/10/25 21:19:44 [MESSAGE 'Sarah: Nice' RECEIVED] at logical timestamp: 39
+[Client #2] 2026/10/25 21:19:46 [DISCONNECTED] at logical timestamp: 37
+[Client #3] 2026/10/25 21:19:46 [MESSAGE 'Sarah has left the chat at server clock: 40' RECEIVED] at logical timestamp: 42
+[Client #1] 2026/10/25 21:19:46 [MESSAGE 'Sarah has left the chat at server clock: 40' RECEIVED] at logical timestamp: 43
+[Client #1] 2026/10/25 21:19:51 [DISCONNECTED] at logical timestamp: 44
+[Client #3] 2026/10/25 21:19:51 [MESSAGE 'Julie has left the chat at server clock: 43' RECEIVED] at logical timestamp: 45
+[Client #3] 2026/10/25 21:19:53 [DISCONNECTED] at logical timestamp: 46

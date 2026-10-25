@@ -112,7 +112,6 @@ func main() {
 	
     // Sending loop
     for {
-		defer close(waitc)
         text, _ := reader.ReadString('\n')
 
 		if(utf8.RuneCountInString(text) > 128){

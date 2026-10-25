@@ -1,0 +1,28 @@
+
+[Server] 2026/10/25 21:17:47 [SERVER STARTUP] at logical timestamp: 1
+[Server] 2026/10/25 21:17:56 [CLIENT #1 HAS BEEN CONNECTED] at logical timestamp: 2
+[Server] 2026/10/25 21:18:10 [MESSAGE: 'Julie has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4 with amount of clients: 1
+[Server] 2026/10/25 21:18:36 [CLIENT #2 HAS BEEN CONNECTED] at logical timestamp: 5
+[Server] 2026/10/25 21:18:40 [MESSAGE: 'Sarah has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 7 with amount of clients: 2
+[Server] 2026/10/25 21:18:40 [MESSAGE: 'Sarah has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 8 with amount of clients: 2
+[Server] 2026/10/25 21:18:47 [MESSAGE: 'Heyy' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 12 with amount of clients: 2
+[Server] 2026/10/25 21:18:56 [MESSAGE: 'Hello!' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 16 with amount of clients: 2
+[Server] 2026/10/25 21:19:05 [CLIENT #3 HAS BEEN CONNECTED] at logical timestamp: 17
+[Server] 2026/10/25 21:19:08 [MESSAGE: 'Kirstine has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 19 with amount of clients: 3
+[Server] 2026/10/25 21:19:08 [MESSAGE: 'Kirstine has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 20 with amount of clients: 3
+[Server] 2026/10/25 21:19:08 [MESSAGE: 'Kirstine has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#3 at logical timestamp: 21 with amount of clients: 3
+[Server] 2026/10/25 21:19:23 [MESSAGE: 'Had a good weekend?' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 24 with amount of clients: 3
+[Server] 2026/10/25 21:19:23 [MESSAGE: 'Had a good weekend?' HAS BEEN BROADCASTED] to client#3 at logical timestamp: 25 with amount of clients: 3
+[Server] 2026/10/25 21:19:38 [MESSAGE: 'Yes! I finished my assignment for monday' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 28 with amount of clients: 3
+[Server] 2026/10/25 21:19:38 [MESSAGE: 'Yes! I finished my assignment for monday' HAS BEEN BROADCASTED] to client#3 at logical timestamp: 29 with amount of clients: 3
+[Server] 2026/10/25 21:19:40 [MESSAGE: 'Me too' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 33 with amount of clients: 3
+[Server] 2026/10/25 21:19:40 [MESSAGE: 'Me too' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 34 with amount of clients: 3
+[Server] 2026/10/25 21:19:44 [MESSAGE: 'Nice' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 38 with amount of clients: 3
+[Server] 2026/10/25 21:19:44 [MESSAGE: 'Nice' HAS BEEN BROADCASTED] to client#3 at logical timestamp: 39 with amount of clients: 3
+[Server] 2026/10/25 21:19:46 [EXIT MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 41 with amount of clients: 3
+[Server] 2026/10/25 21:19:46 [EXIT MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 42 with amount of clients: 3
+[Server] 2026/10/25 21:19:46 [CLIENT DISCONNECTED]: Client#2 at logical timestamp: 42
+[Server] 2026/10/25 21:19:51 [EXIT MESSAGE HAS BEEN BROADCASTED] to client#3 at logical timestamp: 44 with amount of clients: 2
+[Server] 2026/10/25 21:19:51 [CLIENT DISCONNECTED]: Client#1 at logical timestamp: 44
+[Server] 2026/10/25 21:19:53 [CLIENT DISCONNECTED]: Client#3 at logical timestamp: 45
+[Server] 2026/10/25 21:19:53 [SERVER SHUTDOWN] at logical timestamp: 46
