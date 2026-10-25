@@ -7,7 +7,9 @@ import (
 	"net"
 	"os"
 	"strconv"
+	"strings"
 	"sync"
+
 
 	//"time"
 	//"context"
@@ -102,6 +104,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 		// id := message.GetId()
 		participant = message.GetParticipant();
 		text := message.GetMessage();
+		ClientTimestamp := message.GetClock()
 
 		s.mu.Lock()
 		s.clients[participant] = stream
@@ -118,6 +121,19 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 						//Join skal rykkes (message gets logged multiple times)
 						
 				}
+
+				if p == participant{
+					if(strings.Contains(text, "has joined the chat at " + strconv.Itoa(int(ClientTimestamp)))){
+					s.serverLogicalClock++;
+					serverLogger.Println("[MESSAGE: '" + participant + " " + strings.TrimSpace(text) + "' HAS BEEN BROADCASTED] to client#" + p + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
+					_ = st.Send(&proto.Message{
+						Participant:      participant,
+						Message:   text,
+						Clock: s.serverLogicalClock, //increment 
+						}) 
+					}
+				}
+
 			}
 			s.mu.Unlock()
 	}
