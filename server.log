@@ -126,3 +126,24 @@
 [Server] 2026/10/25 15:06:32 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
 [Server] 2026/10/25 15:06:33 [CLIENT DISCONNECTED]: Client Julie
 [Server] 2026/10/25 15:06:33 [SERVER SHUTDOWN] at logical timestamp:%!(EXTRA string=6)
+[Server] 2026/10/25 15:07:23 Server startup
+[Server] 2026/10/25 15:07:25 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 15:07:27 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 15:07:27 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 15:07:31 [CLIENT #2 HAS BEEN CONNECTED]
+[Server] 2026/10/25 15:07:32 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 7
+[Server] 2026/10/25 15:07:32 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 8
+[Server] 2026/10/25 15:07:34 Sync egen clock: 8 med anden clock: 10
+[Server] 2026/10/25 15:07:34 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 12
+[Server] 2026/10/25 15:07:34 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 13
+[Server] 2026/10/25 15:07:36 [CLIENT DISCONNECTED]: Client sarah
+[Server] 2026/10/25 15:07:41 Sync egen clock: 14 med anden clock: 16
+[Server] 2026/10/25 15:07:41 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 18
+[Server] 2026/10/25 15:07:42 [CLIENT DISCONNECTED]: Client Julie
+[Server] 2026/10/25 15:07:42 [SERVER SHUTDOWN] at logical timestamp:%!(EXTRA string=20)
+[Server] 2026/10/25 15:09:14 Server startup
+[Server] 2026/10/25 15:09:14 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 15:09:16 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 15:09:16 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 15:09:17 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 15:09:17 [SERVER SHUTDOWN] at logical timestamp:6

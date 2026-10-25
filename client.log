@@ -138,3 +138,29 @@
 [Client #1] 2026/10/25 15:06:32 Sync egen clock: 2 med anden clock: 4
 [Client #1] 2026/10/25 15:06:32 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
 [Client #1] 2026/10/25 15:06:33 [DISCONNECTED]
+[Client #1] 2026/10/25 15:07:25 [CONNECTED]
+[Client #1] 2026/10/25 15:07:27 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 15:07:27 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 15:07:27 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #2] 2026/10/25 15:07:31 [CONNECTED]
+[Client #2] 2026/10/25 15:07:32 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #2] 2026/10/25 15:07:32 Sync egen clock: 2 med anden clock: 8
+[Client #2] 2026/10/25 15:07:32 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 9
+[Client #1] 2026/10/25 15:07:32 Sync egen clock: 5 med anden clock: 7
+[Client #1] 2026/10/25 15:07:32 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 8
+[Client #2] 2026/10/25 15:07:34 [MESSAGE SENT TO SERVER]
+[Client #2] 2026/10/25 15:07:34 Sync egen clock: 10 med anden clock: 12
+[Client #1] 2026/10/25 15:07:34 Sync egen clock: 8 med anden clock: 13
+[Client #2] 2026/10/25 15:07:34 [MESSAGE RECEIVED]: heyo at logical timestamp: 13
+[Client #1] 2026/10/25 15:07:34 [MESSAGE RECEIVED]: heyo at logical timestamp: 14
+[Client #2] 2026/10/25 15:07:36 [DISCONNECTED]
+[Client #1] 2026/10/25 15:07:36 [MESSAGE RECEIVED]has left the chat at 14 at logical timestamp: 15
+[Client #1] 2026/10/25 15:07:41 [MESSAGE SENT TO SERVER]
+[Client #1] 2026/10/25 15:07:41 Sync egen clock: 16 med anden clock: 18
+[Client #1] 2026/10/25 15:07:41 [MESSAGE RECEIVED]: heyo at logical timestamp: 19
+[Client #1] 2026/10/25 15:07:42 [DISCONNECTED]
+[Client #1] 2026/10/25 15:09:14 [CONNECTED]
+[Client #1] 2026/10/25 15:09:16 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 15:09:16 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 15:09:16 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 15:09:17 [DISCONNECTED]
