@@ -31,4 +31,4 @@ If you want to make a client leave the chat write this command in the terminal
 ```
 
 ### Shutdown server
-The server automatically shuts down, when there are no active clients left
+The server automatically shuts down when there are no active clients left.
