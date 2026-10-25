@@ -6,7 +6,6 @@ import (
 	//"bytes"
 	"context"
 	"fmt"
-	"io"
 	"log"
 	"os"
 	"strings"
@@ -62,7 +61,7 @@ func main() {
 	waitc := make(chan struct{})
 	
 	
-	if err == io.EOF {
+	if err != nil {
 		return;
 	}
 
@@ -94,7 +93,7 @@ func main() {
             msg, err := streamMessage.Recv()
             if err != nil {
 				if(!leaving){
-                	log.Printf("Receive error: %v", err)
+                	fmt.Println("Server shut down")
 				}
                 break
             }
@@ -113,6 +112,7 @@ func main() {
 	
     // Sending loop
     for {
+		defer close(waitc)
         text, _ := reader.ReadString('\n')
 
 		if(utf8.RuneCountInString(text) > 128){
