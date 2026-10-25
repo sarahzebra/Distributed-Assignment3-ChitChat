@@ -29,3 +29,6 @@ If you want to make a client leave the chat use this command
 ```bash
 /leave
 ```
+
+### Shutdown server
+The server automatically shuts down, when there ar eno active clients left

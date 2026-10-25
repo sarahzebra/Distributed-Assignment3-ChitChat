@@ -17,3 +17,87 @@
 [Server] 2026/10/24 17:45:08 [CLIENT #1 HAS BEEN CONNECTED]
 [Server] 2026/10/24 17:45:15 Sync egen clock: 1 med anden clock: 2
 [Server] 2026/10/24 17:45:15 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:32:41 Server startup
+[Server] 2026/10/25 14:32:47 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:32:49 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:32:49 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:32:50 Sync egen clock: 4 med anden clock: 6
+[Server] 2026/10/25 14:32:50 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 8
+[Server] 2026/10/25 14:32:51 Sync egen clock: 8 med anden clock: 10
+[Server] 2026/10/25 14:32:51 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 12
+[Server] 2026/10/25 14:32:53 [CLIENT DISCONNECTED]: Client Julie
+[Server] 2026/10/25 14:38:22 Server startup
+[Server] 2026/10/25 14:38:23 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:38:25 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:38:25 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:38:28 [CLIENT DISCONNECTED]: Client Julie
+[Server] 2026/10/25 14:38:46 [CLIENT #2 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:38:48 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 8
+[Server] 2026/10/25 14:39:03 Server startup
+[Server] 2026/10/25 14:39:05 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:39:07 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:39:07 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:39:09 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:40:26 Server startup
+[Server] 2026/10/25 14:40:27 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:40:29 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:40:29 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:40:31 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:41:12 Server startup
+[Server] 2026/10/25 14:41:13 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:41:15 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:41:15 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:41:17 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:41:43 Server startup
+[Server] 2026/10/25 14:41:46 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:41:47 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:41:47 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:41:50 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:42:08 Server startup
+[Server] 2026/10/25 14:42:14 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:42:15 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:42:15 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:42:17 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:42:42 Server startup
+[Server] 2026/10/25 14:42:45 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:42:46 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:42:46 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:42:48 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:43:22 Server startup
+[Server] 2026/10/25 14:43:23 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:43:24 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:43:24 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:43:26 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:43:51 Server startup
+[Server] 2026/10/25 14:43:52 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:43:53 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:43:53 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:43:56 Sync egen clock: 4 med anden clock: 6
+[Server] 2026/10/25 14:43:56 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 8
+[Server] 2026/10/25 14:44:00 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:44:32 Server startup
+[Server] 2026/10/25 14:44:33 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:44:35 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:44:35 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:44:37 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:48:50 [SERVER SHUTDOWN] at %!(EXTRA int64=0)
+[Server] 2026/10/25 14:48:50 Server startup
+[Server] 2026/10/25 14:48:50 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:48:51 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:48:51 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:48:53 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:50:23 [SERVER SHUTDOWN] at %!(EXTRA int64=0)
+[Server] 2026/10/25 14:50:23 Server startup
+[Server] 2026/10/25 14:50:24 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:50:26 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:50:26 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:50:28 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:50:28 [SERVER SHUTDOWN] at %!(EXTRA int64=5)
+[Server] 2026/10/25 14:50:28 Server shutdown
+[Server] 2026/10/25 14:51:13 Server startup
+[Server] 2026/10/25 14:51:14 [CLIENT #1 HAS BEEN CONNECTED]
+[Server] 2026/10/25 14:51:15 Sync egen clock: 1 med anden clock: 2
+[Server] 2026/10/25 14:51:15 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 14:51:17 [CLIENT DISCONNECTED]: Client julie
+[Server] 2026/10/25 14:51:17 [SERVER SHUTDOWN] at %!(EXTRA int64=5)
+[Server] 2026/10/25 14:51:17 Server shutdown

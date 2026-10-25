@@ -35,3 +35,86 @@
 [Client #1] 2026/10/24 17:45:15 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
 [Client #1] 2026/10/24 17:45:15 Sync egen clock: 2 med anden clock: 4
 [Client #1] 2026/10/24 17:45:15 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:32:47 [CONNECTED]
+[Client #1] 2026/10/25 14:32:49 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:32:49 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:32:49 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:32:50 [MESSAGE SENT TO SERVER]
+[Client #1] 2026/10/25 14:32:50 Sync egen clock: 6 med anden clock: 8
+[Client #1] 2026/10/25 14:32:50 [MESSAGE RECEIVED]: jeje at logical timestamp: 9
+[Client #1] 2026/10/25 14:32:51 [MESSAGE SENT TO SERVER]
+[Client #1] 2026/10/25 14:32:51 Sync egen clock: 10 med anden clock: 12
+[Client #1] 2026/10/25 14:32:51 [MESSAGE RECEIVED]: kfkf at logical timestamp: 13
+[Client #1] 2026/10/25 14:32:53 [DISCONNECTED]
+[Client #1] 2026/10/25 14:38:23 [CONNECTED]
+[Client #1] 2026/10/25 14:38:25 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:38:25 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:38:25 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:38:28 [DISCONNECTED]
+[Client #2] 2026/10/25 14:38:46 [CONNECTED]
+[Client #2] 2026/10/25 14:38:48 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #2] 2026/10/25 14:38:48 Sync egen clock: 2 med anden clock: 8
+[Client #2] 2026/10/25 14:38:48 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 9
+[Client #1] 2026/10/25 14:39:05 [CONNECTED]
+[Client #1] 2026/10/25 14:39:07 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:39:07 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:39:07 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:39:09 [DISCONNECTED]
+[Client #1] 2026/10/25 14:40:27 [CONNECTED]
+[Client #1] 2026/10/25 14:40:29 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:40:29 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:40:29 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:40:31 [DISCONNECTED]
+[Client #1] 2026/10/25 14:41:13 [CONNECTED]
+[Client #1] 2026/10/25 14:41:15 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:41:15 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:41:15 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:41:17 [DISCONNECTED]
+[Client #1] 2026/10/25 14:41:46 [CONNECTED]
+[Client #1] 2026/10/25 14:41:47 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:41:47 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:41:47 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:41:50 [DISCONNECTED]
+[Client #1] 2026/10/25 14:42:14 [CONNECTED]
+[Client #1] 2026/10/25 14:42:15 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:42:15 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:42:15 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:42:17 [DISCONNECTED]
+[Client #1] 2026/10/25 14:42:45 [CONNECTED]
+[Client #1] 2026/10/25 14:42:46 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:42:46 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:42:46 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:42:48 [DISCONNECTED]
+[Client #1] 2026/10/25 14:43:23 [CONNECTED]
+[Client #1] 2026/10/25 14:43:24 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:43:24 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:43:24 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:43:26 [DISCONNECTED]
+[Client #1] 2026/10/25 14:43:52 [CONNECTED]
+[Client #1] 2026/10/25 14:43:53 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:43:53 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:43:53 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:43:56 [MESSAGE SENT TO SERVER]
+[Client #1] 2026/10/25 14:43:56 Sync egen clock: 6 med anden clock: 8
+[Client #1] 2026/10/25 14:43:56 [MESSAGE RECEIVED]: /LEAVE at logical timestamp: 9
+[Client #1] 2026/10/25 14:44:00 [DISCONNECTED]
+[Client #1] 2026/10/25 14:44:33 [CONNECTED]
+[Client #1] 2026/10/25 14:44:35 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:44:35 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:44:35 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:44:37 [DISCONNECTED]
+[Client #1] 2026/10/25 14:48:50 [CONNECTED]
+[Client #1] 2026/10/25 14:48:51 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:48:51 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:48:51 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:48:53 [DISCONNECTED]
+[Client #1] 2026/10/25 14:50:24 [CONNECTED]
+[Client #1] 2026/10/25 14:50:26 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:50:26 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:50:26 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:50:28 [DISCONNECTED]
+[Client #1] 2026/10/25 14:51:14 [CONNECTED]
+[Client #1] 2026/10/25 14:51:15 [JOINED MESSAGE SENT TO SERVER] at logical timestamp: 2
+[Client #1] 2026/10/25 14:51:15 Sync egen clock: 2 med anden clock: 4
+[Client #1] 2026/10/25 14:51:15 [MESSAGE RECEIVED]has joined the chat at 2 at logical timestamp: 5
+[Client #1] 2026/10/25 14:51:17 [DISCONNECTED]

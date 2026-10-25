@@ -2,6 +2,7 @@ package main
 
 import (
 	proto "assignment-3/grpc"
+	"fmt"
 	//"fmt"
 	"io"
 	"log"
@@ -9,7 +10,6 @@ import (
 	"os"
 	"strconv"
 	"sync"
-	
 
 	//"time"
 	//"context"
@@ -20,6 +20,8 @@ import (
 )
 
 var clientId int;
+var shutdown bool = false;
+var grpcServer *grpc.Server;
 	
 
 type ChitChatServer struct {
@@ -58,10 +60,8 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 
     	if err == io.EOF {
 			s.mu.Lock() // We're deleting from s.clients so we should lock 
-
-			if len(s.clients) <= 0 {
-				//stream.GracefulStop();
-			}
+			
+		
 
 			// --- [Event: leaving event] --- 
 			ExitMessage := " has left the chat at " + strconv.Itoa(int(s.serverLogicalClock)) + "\n"
@@ -79,6 +79,13 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 			serverLogger.Printf("[CLIENT DISCONNECTED]: Client %s", participant) // Missing the client ID here...
 			defer delete(s.clients,participant)
 			s.mu.Unlock()
+			
+			if len(s.clients) <= 1 {
+				grpcServer.Stop()
+				serverLogger.Printf("[SERVER SHUTDOWN] at ", s.serverLogicalClock)
+			}
+			
+				
 
       		return nil
     	}
@@ -105,7 +112,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 						Clock: s.serverLogicalClock, //increment 
 						}) 
 						//Join skal rykkes (message gets logged multiple times)
-						serverLogger.Println("[MESSAGE HAS BEEN BROADCASTED] to client#" + id + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)))
+						serverLogger.Printf("[MESSAGE HAS BEEN BROADCASTED] to client#" + id + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)))
 				}
 			}
 			s.mu.Unlock()
@@ -113,13 +120,15 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 }
 
 func main() {
-	server := NewServer()
+	grpcServer := NewServer()
 	
-	server.start_server()
+	grpcServer.start_server()
+
+	
 }
 
 func (s *ChitChatServer) start_server() {
-	grpcServer := grpc.NewServer()
+	grpcServer = grpc.NewServer()
 	listener, err := net.Listen("tcp", ":5050")
 	if err != nil {
 		log.Fatalf("Did not work" + err.Error())
@@ -132,6 +141,7 @@ func (s *ChitChatServer) start_server() {
 	proto.RegisterChitChatServer(grpcServer, s)
 
 	err = grpcServer.Serve(listener)
+
 
 	// --- [Event: Server Shutdown] --- 
 	serverLogger.Printf("Server shutdown")
