@@ -79,8 +79,9 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 			serverLogger.Printf("[CLIENT DISCONNECTED]: Client %s", participant) // Missing the client ID here...
 			defer delete(s.clients,participant)
 			s.mu.Unlock()
-			
+
 			if len(s.clients) <= 1 {
+				s.serverLogicalClock++
 				grpcServer.Stop()
 				serverLogger.Printf("[SERVER SHUTDOWN] at ", s.serverLogicalClock)
 			}
