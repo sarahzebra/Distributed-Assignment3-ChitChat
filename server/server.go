@@ -136,7 +136,7 @@ func (s *ChitChatServer) start_server() {
 	
 	// --- [Event: Server Startup] --- 
 	serverLogger := serverLogger()
-	serverLogger.Printf("Server startup")
+	serverLogger.Printf("[SERVER STARTUP] at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)))
 
 	proto.RegisterChitChatServer(grpcServer, s)
 
