@@ -25,7 +25,7 @@ func main() {
 	var clientLogicalClock int64 = 0
 
 	// Open (or create) file for writing logs.
-	f, err := os.OpenFile("client.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	f, err := os.OpenFile("client.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666) 
 	if err != nil {
 		log.Fatalf("Error opening file: %v", err) 
 	}
@@ -57,7 +57,7 @@ func main() {
 	
 	// --- [Event: Client connected] ---
 	clientLogicalClock++ // Inkrementerer fordi vi er connected
-	clientLogger.Println("[CONNECTED]") // X Client connected
+	clientLogger.Println("[CONNECTED] at: " + strconv.Itoa(int(clientLogicalClock))) // X Client connected
 
 	waitc := make(chan struct{})
 	
@@ -125,7 +125,7 @@ func main() {
 		if(text == "/leave\n"){
 			leaving = true;
 			clientLogicalClock++ // increment clock because leaving event
-			clientLogger.Println("[DISCONNECTED]")
+			clientLogger.Println("[DISCONNECTED] at: " + strconv.Itoa(int(clientLogicalClock)))
 			streamMessage.CloseSend()
 			<-waitc
 			return;
@@ -133,7 +133,7 @@ func main() {
 
 		// --- [Event: Message sent] ---
 		clientLogicalClock++ 
-		clientLogger.Println("[MESSAGE SENT TO SERVER]")
+		clientLogger.Println("[MESSAGE SENT TO SERVER] at: " + strconv.Itoa(int(clientLogicalClock)))
         streamMessage.Send(&proto.Message{
             Id: id,
 			Participant:      participant,
@@ -146,4 +146,3 @@ func main() {
     }
 	
 }
-

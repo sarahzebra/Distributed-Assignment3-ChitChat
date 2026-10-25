@@ -1,19 +1,13 @@
-[Server] 2026/10/24 16:47:10 [CLIENT #1 HAS BEEN CONNECTED]
-[Server] 2026/10/24 16:47:25 Sync egen clock: 1 med anden clock: 2
-[Server] 2026/10/24 16:47:25 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
-[Server] 2026/10/24 16:50:15 Startudefer f.Close()p
-[Server] 2026/10/24 16:54:15 Start
-[Server] 2026/10/24 17:00:20 [CLIENT #1 HAS BEEN CONNECTED]
-[Server] 2026/10/24 17:00:21 [CLIENT #2 HAS BEEN CONNECTED]
-[Server] 2026/10/24 17:00:26 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
-[Server] 2026/10/24 17:00:28 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 6
-[Server] 2026/10/24 17:00:28 [MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 7
-[Server] 2026/10/24 17:00:30 [CLIENT DISCONNECTED]: Client g
-[Server] 2026/10/24 17:00:32 [CLIENT DISCONNECTED]: Client h
-[Server] 2026/10/24 17:06:23 Server startup
-[Server] 2026/10/24 17:16:34 Server startup
-[Server] 2026/10/24 17:17:09 Server startup
-[Server] 2026/10/24 17:45:06 Server startup
-[Server] 2026/10/24 17:45:08 [CLIENT #1 HAS BEEN CONNECTED]
-[Server] 2026/10/24 17:45:15 Sync egen clock: 1 med anden clock: 2
-[Server] 2026/10/24 17:45:15 [MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4
+[Server] 2026/10/25 15:26:43 Server startup at: 0
+[Server] 2026/10/25 15:26:45 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
+[Server] 2026/10/25 15:26:46 Tjek for sync ServerClock: 1 med client #1 med ClientClock: 2
+[Server] 2026/10/25 15:26:46 ServerClock efter sync: 3
+[Server] 2026/10/25 15:26:49 [CLIENT #2 HAS BEEN CONNECTED at server clock: 4
+[Server] 2026/10/25 15:26:50 Tjek for sync ServerClock: 4 med client #2 med ClientClock: 2
+[Server] 2026/10/25 15:26:50 ServerClock efter sync: 5
+[Server] 2026/10/25 15:26:50 [MESSAGE: ' has joined the chat at 2
+' HAS BEEN BROADCASTED] to client#A at logical timestamp: 6 with amount of clients: 2
+[Server] 2026/10/25 15:26:53 Tjek for sync ServerClock: 6 med client #1 med ClientClock: 8
+[Server] 2026/10/25 15:26:53 ServerClock efter sync: 9
+[Server] 2026/10/25 15:26:53 [MESSAGE: ': hej
+' HAS BEEN BROADCASTED] to client#C at logical timestamp: 10 with amount of clients: 2

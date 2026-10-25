@@ -38,7 +38,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 	clientId++
 
 	s.serverLogicalClock++
-	serverLogger.Println("[CLIENT #" + strconv.Itoa(clientId) + " HAS BEEN CONNECTED]")
+	serverLogger.Println("[CLIENT #" + strconv.Itoa(clientId) + " HAS BEEN CONNECTED at server clock: " + strconv.Itoa(int(s.serverLogicalClock)))
 	
 	header := metadata.New(map[string]string{"client-id":strconv.Itoa(clientId)})
 	stream.SendHeader(header)
@@ -49,11 +49,12 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 		
 		// --- [Event: Client connection] --- 
 		// --- Sync with other "nodes" clock and increment
+		serverLogger.Printf("Tjek for sync ServerClock: " + strconv.Itoa(int(s.serverLogicalClock)) + " med client #" +  message.Id + " med ClientClock: " + strconv.Itoa(int(message.GetClock())))
 		if message.GetClock() > s.serverLogicalClock { // Skal det være lige før leaving event eller broadcasting besked eller må det godt ske lige når beskeden modtages?
-			serverLogger.Printf("Sync egen clock: " + strconv.Itoa(int(s.serverLogicalClock)) + " med anden clock: " + strconv.Itoa(int(message.GetClock())))
 			s.serverLogicalClock = message.GetClock()
 		}
 		s.serverLogicalClock++
+		serverLogger.Printf("ServerClock efter sync: " + strconv.Itoa(int(s.serverLogicalClock)))
 
 
     	if err == io.EOF {
@@ -64,10 +65,12 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 			}
 
 			// --- [Event: leaving event] --- 
-			ExitMessage := " has left the chat at " + strconv.Itoa(int(s.serverLogicalClock)) + "\n"
-			
+			ExitMessage := " has left the chat at server clock: " + strconv.Itoa(int(s.serverLogicalClock)) + "\n"
+
 			for p, st := range s.clients {
             if p != participant {
+				s.serverLogicalClock++;
+				serverLogger.Println("[EXIT MESSAGE HAS BEEN BROADCASTED] to client#" + message.GetId() + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
                 _ = st.Send(&proto.Message{
             		Participant:      participant,
             		Message:   ExitMessage,
@@ -76,7 +79,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 				}
 				
 			}
-			serverLogger.Printf("[CLIENT DISCONNECTED]: Client %s", participant) // Missing the client ID here...
+			serverLogger.Printf("[CLIENT DISCONNECTED]: Client " + participant +  " at server clock: " + strconv.Itoa(int(s.serverLogicalClock))) // Missing the client ID here...
 			defer delete(s.clients,participant)
 			s.mu.Unlock()
 
@@ -89,7 +92,7 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
     	}
 
 		// --- [Event: Broadcasting message] --- 
-		id := message.GetId()
+		// id := message.GetId()
 		participant = message.GetParticipant();
 		text := message.GetMessage();
 
@@ -97,15 +100,15 @@ func (s *ChitChatServer) PostMessage(stream grpc.BidiStreamingServer[proto.Messa
 		s.clients[participant] = stream
 
 		for p, st := range s.clients {
-			s.serverLogicalClock++;
-				if p != participant || p == participant { //Message should be sent to all clients, including the one that sent it.
+				if p != participant { //Join Message should be sent to all clients, including the one that sent it.
+					s.serverLogicalClock++;
+					serverLogger.Println("[MESSAGE: '" + text + "' HAS BEEN BROADCASTED] to client#" + p + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)) + " with amount of clients: " + strconv.Itoa(int(len(s.clients))))
 					_ = st.Send(&proto.Message{
 						Participant:      participant,
 						Message:   text,
 						Clock: s.serverLogicalClock, //increment 
 						}) 
 						//Join skal rykkes (message gets logged multiple times)
-						serverLogger.Println("[MESSAGE HAS BEEN BROADCASTED] to client#" + id + " at logical timestamp: " + strconv.Itoa(int(s.serverLogicalClock)))
 				}
 			}
 			s.mu.Unlock()
@@ -127,7 +130,7 @@ func (s *ChitChatServer) start_server() {
 	
 	// --- [Event: Server Startup] --- 
 	serverLogger := serverLogger()
-	serverLogger.Printf("Server startup")
+	serverLogger.Printf("Server startup at: " + strconv.Itoa(int(s.serverLogicalClock)))
 
 	proto.RegisterChitChatServer(grpcServer, s)
 
