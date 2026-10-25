@@ -1,34 +1,12 @@
-[Server] 2026/10/25 16:48:13 [SERVER STARTUP] at logical timestamp: 0
-[Server] 2026/10/25 16:48:18 [CLIENT #1 HAS BEEN CONNECTED at server clock: 1
-[Server] 2026/10/25 16:48:20 Tjek for sync ServerClock: 1 med client #0 med ClientClock: 2
-[Server] 2026/10/25 16:48:20 ServerClock efter sync: 3
-[Server] 2026/10/25 16:48:20 [MESSAGE: 'Julie has joined the chat at 2' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4 with amount of clients: 1
-[Server] 2026/10/25 16:48:28 [CLIENT #2 HAS BEEN CONNECTED at server clock: 5
-[Server] 2026/10/25 16:48:31 Tjek for sync ServerClock: 5 med client #0 med ClientClock: 2
-[Server] 2026/10/25 16:48:31 ServerClock efter sync: 6
-[Server] 2026/10/25 16:48:31 [MESSAGE: 'Sarah has joined the chat at 2' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 7 with amount of clients: 2
-[Server] 2026/10/25 16:48:31 [MESSAGE: 'has joined the chat at 2' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 8 with amount of clients: 2
-[Server] 2026/10/25 16:48:32 Tjek for sync ServerClock: 8 med client #2 med ClientClock: 9
-[Server] 2026/10/25 16:48:32 ServerClock efter sync: 10
-[Server] 2026/10/25 16:48:32 [MESSAGE: ': hey' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 11 with amount of clients: 2
-[Server] 2026/10/25 16:54:40 Tjek for sync ServerClock: 11 med client #1 med ClientClock: 13
-[Server] 2026/10/25 16:54:40 ServerClock efter sync: 14
-[Server] 2026/10/25 16:54:40 [MESSAGE: ': hey' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 15 with amount of clients: 2
-[Server] 2026/10/25 16:54:44 Tjek for sync ServerClock: 15 med client #1 med ClientClock: 14
-[Server] 2026/10/25 16:54:44 ServerClock efter sync: 16
-[Server] 2026/10/25 16:54:44 [MESSAGE: ': wassup' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 17 with amount of clients: 2
-[Server] 2026/10/25 16:54:49 Tjek for sync ServerClock: 17 med client #1 med ClientClock: 15
-[Server] 2026/10/25 16:54:49 ServerClock efter sync: 18
-[Server] 2026/10/25 16:54:49 [MESSAGE: ': I am leving now g' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 19 with amount of clients: 2
-[Server] 2026/10/25 16:54:50 Tjek for sync ServerClock: 19 med client #1 med ClientClock: 0
-[Server] 2026/10/25 16:54:50 ServerClock efter sync: 20
-[Server] 2026/10/25 16:54:50 [EXIT MESSAGE HAS BEEN BROADCASTED] to client#1 at logical timestamp: 21 with amount of clients: 2
-[Server] 2026/10/25 16:54:50 [CLIENT DISCONNECTED]: Client Julie at server clock: 21
-[Server] 2026/10/25 16:54:55 Tjek for sync ServerClock: 21 med client #2 med ClientClock: 23
-[Server] 2026/10/25 16:54:55 ServerClock efter sync: 24
-[Server] 2026/10/25 16:54:57 Tjek for sync ServerClock: 24 med client #2 med ClientClock: 24
-[Server] 2026/10/25 16:54:57 ServerClock efter sync: 25
-[Server] 2026/10/25 16:54:59 Tjek for sync ServerClock: 25 med client #2 med ClientClock: 0
-[Server] 2026/10/25 16:54:59 ServerClock efter sync: 26
-[Server] 2026/10/25 16:54:59 [CLIENT DISCONNECTED]: Client Sarah at server clock: 26
-[Server] 2026/10/25 16:54:59 [SERVER SHUTDOWN] at logical timestamp: 27
+[Server] 2026/10/25 18:09:55 [SERVER STARTUP] at logical timestamp: 1
+[Server] 2026/10/25 18:09:55 [CLIENT #1 HAS BEEN CONNECTED] at logical timestamp: 2
+[Server] 2026/10/25 18:09:57 [MESSAGE: 'Julie has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 4 with amount of clients: 1
+[Server] 2026/10/25 18:09:59 [CLIENT #2 HAS BEEN CONNECTED] at logical timestamp: 5
+[Server] 2026/10/25 18:10:00 [MESSAGE: 'Sarah has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 7 with amount of clients: 2
+[Server] 2026/10/25 18:10:00 [MESSAGE: 'Sarah has joined the chat at client clock: 2' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 8 with amount of clients: 2
+[Server] 2026/10/25 18:10:02 [MESSAGE: 'hey' HAS BEEN BROADCASTED] to client#2 at logical timestamp: 11 with amount of clients: 2
+[Server] 2026/10/25 18:10:04 [MESSAGE: 'no' HAS BEEN BROADCASTED] to client#1 at logical timestamp: 15 with amount of clients: 2
+[Server] 2026/10/25 18:10:06 [EXIT MESSAGE HAS BEEN BROADCASTED] to client#2 at logical timestamp: 17 with amount of clients: 2
+[Server] 2026/10/25 18:10:06 [CLIENT DISCONNECTED]: Client# 1 at logical timestamp: 17
+[Server] 2026/10/25 18:10:08 [CLIENT DISCONNECTED]: Client# 2 at logical timestamp: 18
+[Server] 2026/10/25 18:10:08 [SERVER SHUTDOWN] at logical timestamp: 19

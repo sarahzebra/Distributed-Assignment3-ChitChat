@@ -57,7 +57,7 @@ func main() {
 	
 	// --- [Event: Client connected] ---
 	clientLogicalClock++ // Inkrementerer fordi vi er connected
-	clientLogger.Println("[CONNECTED] at: " + strconv.Itoa(int(clientLogicalClock))) // X Client connected
+	clientLogger.Println("[CONNECTED] at logical timestamp: " + strconv.Itoa(int(clientLogicalClock))) // X Client connected
 
 	waitc := make(chan struct{})
 	
@@ -76,7 +76,7 @@ func main() {
 	clientLogicalClock++ 
 	clientLogger.Println("[JOINED MESSAGE SENT TO SERVER] at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
 
-	joinMessage := " has joined the chat at " + strconv.Itoa(int(clientLogicalClock)) + "\n"
+	joinMessage := participant + " has joined the chat at client clock: " + strconv.Itoa(int(clientLogicalClock)) + "\n"
 	streamMessage.Send(&proto.Message{
 		Id: id,
 		Participant: participant,
@@ -101,14 +101,13 @@ func main() {
 
 			// --- Sync with other "nodes" clock and increment
 			if msg.GetClock() > clientLogicalClock {
-				clientLogger.Printf("Sync egen clock: " + strconv.Itoa(int(clientLogicalClock)) + " med anden clock: " + strconv.Itoa(int(msg.GetClock())))
 				clientLogicalClock = msg.GetClock()
 			}
 			// --- [Event: Message received] ---
 			clientLogicalClock++
-			clientLogger.Printf("[MESSAGE RECEIVED]" + strings.TrimSpace(msg.Message) + " at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
+			clientLogger.Printf("[MESSAGE '" + strings.TrimSpace(msg.Message) + "' RECEIVED] at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
 
-            fmt.Print(msg.Participant, msg.Message)
+            fmt.Print(msg.Message)
         }
     }()
 	
@@ -125,7 +124,7 @@ func main() {
 		if(text == "/leave\n"){
 			leaving = true;
 			clientLogicalClock++ // increment clock because leaving event
-			clientLogger.Println("[DISCONNECTED] at: " + strconv.Itoa(int(clientLogicalClock)))
+			clientLogger.Println("[DISCONNECTED] at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
 			streamMessage.CloseSend()
 			<-waitc
 			return;
@@ -133,11 +132,11 @@ func main() {
 
 		// --- [Event: Message sent] ---
 		clientLogicalClock++ 
-		clientLogger.Println("[MESSAGE SENT TO SERVER] at: " + strconv.Itoa(int(clientLogicalClock)))
+		clientLogger.Println("[MESSAGE SENT TO SERVER] at logical timestamp: " + strconv.Itoa(int(clientLogicalClock)))
         streamMessage.Send(&proto.Message{
             Id: id,
 			Participant:      participant,
-            Message:   ": " + text,
+            Message:   text,
             Clock: clientLogicalClock,
         })
 
